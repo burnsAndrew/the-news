@@ -16,3 +16,13 @@ export const getSingleArticle = article_id => {
       return article;
     });
 };
+
+export const getTopics = query => {
+  return axios
+    .get(`${baseUrl}topics`, {
+      params: query
+    })
+    .then(({ data: { topics } }) => {
+      return topics;
+    });
+};
