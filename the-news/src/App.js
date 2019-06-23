@@ -5,6 +5,7 @@ import { Router } from "@reach/router";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import ArticlesList from "./components/ArticlesList";
+import SingleArticle from "./components/SingleArticle";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Router>
         <Home path="/" />
         <ArticlesList path="/articles" />
+        <SingleArticle path="/articles/:article_id" />
       </Router>
     </div>
   );
