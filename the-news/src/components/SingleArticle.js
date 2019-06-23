@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { getSingleArticle } from "../api";
+import Comments from "./Comments";
 
 class SingleArticle extends Component {
   state = {
@@ -15,6 +16,7 @@ class SingleArticle extends Component {
           <h2>Written By: {article.author}</h2>
           <h4>{article.body}</h4>
         </div>
+        <Comments path="/articles/:article_id" />
       </div>
     );
   }

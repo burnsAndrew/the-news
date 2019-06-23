@@ -40,3 +40,11 @@ export const sortArticles = query => {
       return articles;
     });
 };
+
+export const getCommentsByArticle = article_id => {
+  return axios
+    .get(`${baseUrl}articles/${article_id}/comments`)
+    .then(({ data: { comments } }) => {
+      return comments;
+    });
+};
