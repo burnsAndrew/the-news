@@ -7,6 +7,7 @@ import Home from "./components/Home";
 import Topics from "./components/Topics";
 import ArticlesList from "./components/ArticlesList";
 import SingleArticle from "./components/SingleArticle";
+import User from "./components/UserProfile";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Topics path="/topics" />
         <ArticlesList path="/articles" />
         <SingleArticle path="/articles/:article_id" />
+        <User path="/user" />
       </Router>
     </div>
   );
