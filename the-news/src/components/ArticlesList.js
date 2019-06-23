@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { getArticles } from "../api";
+import { getArticles, sortArticles } from "../api";
+import Sorting from "./Sorting";
 import "../App.css";
 
 class ArticlesList extends Component {
@@ -7,9 +8,16 @@ class ArticlesList extends Component {
     listOfArticles: []
   };
 
+  handleSort(query) {
+    sortArticles(query).then(articles => {
+      this.setState({ listOfArticles: articles });
+    });
+  }
+
   render() {
     return (
       <div>
+        <Sorting />
         <ul className="articlesList" key="articles">
           {this.state.listOfArticles &&
             this.state.listOfArticles.map(article => {

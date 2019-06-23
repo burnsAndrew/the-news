@@ -32,3 +32,11 @@ export const getUser = username => {
     return user;
   });
 };
+
+export const sortArticles = query => {
+  return axios
+    .get(`${baseUrl}articles${query}`, { params: query })
+    .then(({ data: { articles } }) => {
+      return articles;
+    });
+};
