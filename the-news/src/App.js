@@ -39,6 +39,7 @@ class App extends Component {
 
           <LogInBox path="/login" logInUser={this.logInUser} />
           <ArticlesList path="/articles" />
+          <ArticlesList path="/articles/topic/:topic" />
           <SingleArticle
             path="/articles/:article_id"
             loggedInUser={this.state.loggedInUser}
