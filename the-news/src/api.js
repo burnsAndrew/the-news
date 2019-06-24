@@ -48,3 +48,19 @@ export const getCommentsByArticle = article_id => {
       return comments;
     });
 };
+
+export const patchSingleArticle = (article_id, directionOfVote) => {
+  return axios
+    .patch(`${baseUrl}articles/${article_id}`, directionOfVote)
+    .then(article => {
+      return article;
+    });
+};
+
+export const patchSingleComment = (comment_id, directionOfVote) => {
+  return axios
+    .patch(`${baseUrl}comments/${comment_id}`, directionOfVote)
+    .then(comment => {
+      return comment;
+    });
+};
