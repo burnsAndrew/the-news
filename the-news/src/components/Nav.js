@@ -15,9 +15,14 @@ const Nav = props => {
           <li>Articles</li>
         </Link>
         {!props.loggedInUser ? (
-          <Link to="/login">
-            <li>Log In</li>
-          </Link>
+          <div>
+            <Link to="/login">
+              <li>Log in</li>
+            </Link>
+            <Link to="/createaccount">
+              <li>Create account</li>
+            </Link>
+          </div>
         ) : (
           <div className="loggedIn">
             <Link to="/user">

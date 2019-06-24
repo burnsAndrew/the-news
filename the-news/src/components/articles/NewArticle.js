@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { postNewArticle } from "../../api";
 
-//not finished this yet - stopped before lecture at 11.30am on Monday.  Use newcomment function as a guide.
-
 class AddArticleForm extends Component {
   state = {
     body: "",

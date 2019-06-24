@@ -8,6 +8,7 @@ import Topics from "./components/topics/Topics";
 import ArticlesList from "./components/articles/ArticlesList";
 import SingleArticle from "./components/articles/SingleArticle";
 import User from "./components/users/UserProfile";
+import NewUser from "./components/users/NewUser";
 import LogInBox from "./components/LogInBox";
 
 class App extends Component {
@@ -40,6 +41,7 @@ class App extends Component {
           <Topics path="/topics" />
 
           <LogInBox path="/login" logInUser={this.logInUser} />
+          <NewUser path="/createaccount" />
           <ArticlesList path="/articles" />
           <ArticlesList path="/articles/topic/:topic" />
           <SingleArticle

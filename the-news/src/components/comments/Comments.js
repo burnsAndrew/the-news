@@ -17,17 +17,6 @@ class Comments extends Component {
     });
   };
 
-  //need a componentDidUpdate here, to make it render??
-
-  addNewComment = comment => {
-    this.setState(prevState => {
-      const newComments = prevState.comments.map(comment => {
-        return { ...comment };
-      });
-      return { comments: [comment, ...newComments] };
-    });
-  };
-
   render() {
     return (
       <div>
@@ -78,6 +67,20 @@ class Comments extends Component {
       this.setState({ comments: comments });
     });
   }
+
+  //need a componentDidUpdate here, to make it render??
+  // then, can i put it into it's own component... NewComment.js?
+
+  addNewComment = comment => {
+    this.setState(prevState => {
+      const newComments = prevState.comments.map(comment => {
+        return { ...comment };
+      });
+      return { comments: [comment, ...newComments] };
+    });
+  };
+
+  // to here
 }
 
 export default Comments;

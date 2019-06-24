@@ -88,3 +88,15 @@ export const postNewArticle = (article_id, articleToPost) => {
       return article;
     });
 };
+
+export const postNewUser = ({ username, name, avatar_url }) => {
+  return axios
+    .post(`${baseUrl}/users`, {
+      username: username,
+      name: name,
+      avatar_url: avatar_url
+    })
+    .then(({ data: { user } }) => {
+      return user;
+    });
+};
