@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { getCommentsByArticle } from "../api";
 import Voting from "./Voting";
+import PostComment from "./PostComment";
 
 class Comments extends Component {
   state = {
@@ -11,6 +12,15 @@ class Comments extends Component {
     return (
       <div>
         <h1>Comments</h1>
+        {this.props.loggedInUser ? (
+          <PostComment
+            username={this.props.loggedInUser}
+            id={this.props.id}
+            addComment={this.addComment}
+          />
+        ) : (
+          <h2>Please log in to add a comment</h2>
+        )}
         <ul className="comments">
           {this.state.comments.map(comment => {
             return (

@@ -64,3 +64,11 @@ export const patchSingleComment = (comment_id, directionOfVote) => {
       return comment;
     });
 };
+
+export const postNewComment = (article_id, body) => {
+  return axios
+    .post(`${baseUrl}articles/${article_id}/comments`, body)
+    .then(({ data: { comment } }) => {
+      return comment;
+    });
+};
