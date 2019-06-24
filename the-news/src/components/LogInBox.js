@@ -11,7 +11,7 @@ class LogInBox extends Component {
     return (
       <div>
         <div className="LogInBox">
-          <h1>Enter Your Username:</h1>
+          <h2>Enter Your Username:</h2>
           <form onSubmit={this.handleSubmit}>
             <input onChange={this.handleInput} type="text" />
             <button

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
 import { getArticles, sortArticles } from "../api";
-import Sorting from "./Sorting";
+// import Sorting from "./Sorting";
 import "../App.css";
 
 class ArticlesList extends Component {
@@ -18,7 +18,27 @@ class ArticlesList extends Component {
   render() {
     return (
       <div>
-        <Sorting handleSort={this.handleSort} />
+        <div className="sort">
+          <h3>Sort By:</h3>
+          <button
+            className="sortbyDateButton"
+            onClick={() => this.handleSort("?sort_by=created_at")}
+          >
+            Date
+          </button>
+          <button
+            className="sortbyCommentCountButton"
+            onClick={() => this.handleSort("?sort_by=comment_count")}
+          >
+            Number Of Comments
+          </button>
+          <button
+            className="sortbyVoteCountButton"
+            onClick={() => this.handleSort("?sort_by=votes")}
+          >
+            Votes
+          </button>
+        </div>
         <ul className="articlesList" key="articles">
           {this.state.listOfArticles &&
             this.state.listOfArticles.map(article => {

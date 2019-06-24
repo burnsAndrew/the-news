@@ -16,13 +16,13 @@ class App extends Component {
 
   logInUser = username => {
     this.setState({ loggedInUser: username }, () => {
-      navigate("/articles");
+      navigate("/home");
     });
     localStorage.setItem("loggedInUser", this.state.loggedInUser);
   };
 
   logOutUser = () => {
-    this.setState({ loggedInUser: "" }, () => navigate("/login"));
+    this.setState({ loggedInUser: "" }, () => navigate("/home"));
     localStorage.setItem("loggedInUser", "");
   };
 
@@ -36,6 +36,7 @@ class App extends Component {
         <Router>
           <Home path="/" />
           <Topics path="/topics" />
+
           <LogInBox path="/login" logInUser={this.logInUser} />
           <ArticlesList path="/articles" />
           <SingleArticle

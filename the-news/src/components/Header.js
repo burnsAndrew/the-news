@@ -12,11 +12,11 @@ const Header = props => {
           <Link to="/">
             <li>Home</li>
           </Link>
-          <Link to="/articles">
-            <li>Articles</li>
-          </Link>
           <Link to="/topics">
             <li>Topics</li>
+          </Link>
+          <Link to="/articles">
+            <li>Articles</li>
           </Link>
           {!props.loggedInUser ? (
             <Link to="/login">
