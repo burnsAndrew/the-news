@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import logo from "./assets/";
 import "./App.css";
 import { Router, navigate } from "@reach/router";
 import Header from "./components/Header";

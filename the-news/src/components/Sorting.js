@@ -1,5 +1,7 @@
 import React from "react";
 
+//sort isn't working at the moment - need to look at state or props situation as it is undefined
+
 function Sorting() {
   return (
     <div className="sort">

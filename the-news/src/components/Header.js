@@ -28,7 +28,7 @@ const Header = props => {
                 <li>My Profile</li>
               </Link>
               <li>
-                Hey {props.loggedInUser}, good to see you again{" "}
+                You're logged in as {props.loggedInUser}. Not you?{" "}
                 <button className="logoutButton" onClick={props.logOutUser}>
                   Log out
                 </button>

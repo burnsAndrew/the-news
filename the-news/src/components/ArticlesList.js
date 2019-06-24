@@ -18,7 +18,7 @@ class ArticlesList extends Component {
   render() {
     return (
       <div>
-        <Sorting />
+        <Sorting handleSort={this.handleSort} />
         <ul className="articlesList" key="articles">
           {this.state.listOfArticles &&
             this.state.listOfArticles.map(article => {
@@ -34,8 +34,8 @@ class ArticlesList extends Component {
                   </Link>
                   <h2>Written By: {article.author}</h2>
                   <h3>Topic: {article.topic}</h3>
-                  <h3>Votes: {article.votes}</h3>
-                  <h3>Comments: {article.comment_count}</h3>
+                  <h4>Votes: {article.votes}</h4>
+                  <h4>Comments: {article.comment_count}</h4>
                 </div>
               );
             })}

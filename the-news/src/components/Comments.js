@@ -15,7 +15,7 @@ class Comments extends Component {
             return (
               <li className="comment" key={comment.comment_id}>
                 <h2>Comment By: {comment.author}</h2>
-                <h3>{comment.body}</h3>
+                <h4>{comment.body}</h4>
               </li>
             );
           })}
