@@ -30,11 +30,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header
+        <Header />
+        <Nav
           loggedInUser={this.state.loggedInUser}
           logOutUser={this.logOutUser}
         />
-        <Nav />
         <Router>
           <Home path="/" />
           <Topics path="/topics" />

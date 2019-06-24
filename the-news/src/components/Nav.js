@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "@reach/router";
 
-function Nav(props) {
+const Nav = props => {
   return (
     <nav>
       <ul className="nav">
@@ -34,6 +34,6 @@ function Nav(props) {
       </ul>
     </nav>
   );
-}
+};
 
 export default Nav;

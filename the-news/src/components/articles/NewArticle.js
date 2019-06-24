@@ -33,25 +33,32 @@ class AddArticleForm extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit} id="ArticleForm">
+        <label>Title: </label>
         <input
           onChange={this.handleChange}
           type="text"
           name="title"
           id="titleinput"
-        />
+          placeholder="What is your article called?"
+        />{" "}
+        <label>Body: </label>
         <input
           onChange={this.handleChange}
           type="text"
           name="body"
           id="bodyinput"
-        />
-        <input
-          onChange={this.handleChange}
-          type="text"
-          name="topic"
-          id="topicinput"
-        />
-        <button className="submitArticle" disabled={!this.state.body}>
+          placeholder="Your article here..."
+        />{" "}
+        <label>Topic: </label>
+        <select onChange={this.handleChange} name="topic" id="topicSelect">
+          <option value="Coding">Coding</option>
+          <option value="Cooking">Cooking</option>
+          <option value="Football">Football</option>
+        </select>{" "}
+        <button
+          className="submitArticle"
+          disabled={!this.state.body || !this.state.topic || !this.state.title}
+        >
           Submit article
         </button>
       </form>
