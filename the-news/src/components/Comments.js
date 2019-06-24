@@ -33,6 +33,17 @@ class Comments extends Component {
                     id={comment.comment_id}
                     loggedInUser={this.props.loggedInUser}
                   />
+                  {this.props.loggedInUser === comment.author && (
+                    <button
+                      id="comment.comment_id"
+                      className="deleteButton"
+                      onClick={() => {
+                        this.handleDelete(comment.comment_id);
+                      }}
+                    >
+                      Delete
+                    </button>
+                  )}
                 </div>
               </li>
             );
