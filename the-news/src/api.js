@@ -80,3 +80,11 @@ export const deleteComment = comment_id => {
       return comment;
     });
 };
+
+export const postNewArticle = (article_id, articleToPost) => {
+  return axios
+    .post(`${baseUrl}articles/${article_id}`, articleToPost)
+    .then(article => {
+      return article;
+    });
+};

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import { Router, navigate } from "@reach/router";
 import Header from "./components/Header";
+import Nav from "./components/Nav";
 import Home from "./components/Home";
 import Topics from "./components/topics/Topics";
 import ArticlesList from "./components/articles/ArticlesList";
@@ -33,6 +34,7 @@ class App extends Component {
           loggedInUser={this.state.loggedInUser}
           logOutUser={this.logOutUser}
         />
+        <Nav />
         <Router>
           <Home path="/" />
           <Topics path="/topics" />

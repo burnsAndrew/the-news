@@ -3,6 +3,7 @@ import { Link } from "@reach/router";
 import { getArticles, sortArticles } from "../../api";
 // import Sorting from "./Sorting";
 import "../../App.css";
+import AddArticleForm from "./NewArticle";
 
 class ArticlesList extends Component {
   state = {
@@ -38,6 +39,9 @@ class ArticlesList extends Component {
           >
             Votes
           </button>
+        </div>
+        <div>
+          <AddArticleForm />
         </div>
         <ul className="articlesList" key="articles">
           {this.state.listOfArticles &&
