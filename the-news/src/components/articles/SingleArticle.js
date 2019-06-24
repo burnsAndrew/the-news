@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { getSingleArticle } from "../api";
-import Comments from "./Comments";
-import Voting from "./Voting";
+import { getSingleArticle } from "../../api";
+import Comments from "../comments/Comments";
+import Voting from "../Voting";
 
 class SingleArticle extends Component {
   state = {

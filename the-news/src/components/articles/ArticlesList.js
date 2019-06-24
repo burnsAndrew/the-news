@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
-import { getArticles, sortArticles } from "../api";
+import { getArticles, sortArticles } from "../../api";
 // import Sorting from "./Sorting";
-import "../App.css";
+import "../../App.css";
 
 class ArticlesList extends Component {
   state = {

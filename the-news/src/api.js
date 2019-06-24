@@ -72,3 +72,11 @@ export const postNewComment = (article_id, body) => {
       return comment;
     });
 };
+
+export const deleteComment = comment_id => {
+  return axios
+    .delete(`${baseUrl}comments/${comment_id}`)
+    .then(({ data: { comment } }) => {
+      return comment;
+    });
+};

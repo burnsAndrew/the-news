@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { postNewComment } from "../api.js";
+import { postNewComment } from "../../api.js";
 
 class PostComment extends Component {
   state = {
@@ -27,7 +27,7 @@ class PostComment extends Component {
   render() {
     return (
       <div className="postComment">
-        <h2>Something to say?</h2>
+        <h2>What do you think?</h2>
         <form action="" onSubmit={this.handleSubmit}>
           <textarea
             id="commentInput"

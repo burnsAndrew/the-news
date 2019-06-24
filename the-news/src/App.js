@@ -3,10 +3,10 @@ import "./App.css";
 import { Router, navigate } from "@reach/router";
 import Header from "./components/Header";
 import Home from "./components/Home";
-import Topics from "./components/Topics";
-import ArticlesList from "./components/ArticlesList";
-import SingleArticle from "./components/SingleArticle";
-import User from "./components/UserProfile";
+import Topics from "./components/topics/Topics";
+import ArticlesList from "./components/articles/ArticlesList";
+import SingleArticle from "./components/articles/SingleArticle";
+import User from "./components/users/UserProfile";
 import LogInBox from "./components/LogInBox";
 
 class App extends Component {

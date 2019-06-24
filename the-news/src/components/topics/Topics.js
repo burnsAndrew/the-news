@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { getTopics } from "../api.js";
+import { getTopics } from "../../api.js";
 import { Link } from "@reach/router";
-import ArticlesList from "./ArticlesList";
+import ArticlesList from "../articles/ArticlesList";
 
 class Topics extends Component {
   state = {
