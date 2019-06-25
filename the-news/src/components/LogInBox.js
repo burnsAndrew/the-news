@@ -8,16 +8,14 @@ class LogInBox extends Component {
   };
 
   render() {
+    const { usernameInput } = this.state;
     return (
       <div>
         <div className="LogInBox">
           <h2>Enter Your Username:</h2>
           <form onSubmit={this.handleSubmit}>
             <input onChange={this.handleInput} type="text" />
-            <button
-              className="logInButton"
-              disabled={!this.state.usernameInput}
-            >
+            <button className="logInButton" disabled={!usernameInput}>
               Log In
             </button>
           </form>

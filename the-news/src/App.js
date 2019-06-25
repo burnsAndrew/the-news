@@ -29,29 +29,24 @@ class App extends Component {
   };
 
   render() {
+    const { loggedInUser } = this.state;
     return (
       <div className="App">
         <Header />
-        <Nav
-          loggedInUser={this.state.loggedInUser}
-          logOutUser={this.logOutUser}
-        />
+        <Nav loggedInUser={loggedInUser} logOutUser={this.logOutUser} />
         <Router>
           <Home path="/" />
           <Topics path="/topics" />
 
           <LogInBox path="/login" logInUser={this.logInUser} />
           <NewUser path="/createaccount" />
-          <ArticlesList
-            path="/articles"
-            loggedInUser={this.state.loggedInUser}
-          />
+          <ArticlesList path="/articles" loggedInUser={loggedInUser} />
           <ArticlesList path="/articles/topic/:topic" />
           <SingleArticle
             path="/articles/:article_id"
-            loggedInUser={this.state.loggedInUser}
+            loggedInUser={loggedInUser}
           />
-          <User path="/user" loggedInUser={this.state.loggedInUser} />
+          <User path="/user" loggedInUser={loggedInUser} />
         </Router>
       </div>
     );

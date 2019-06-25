@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "@reach/router";
 
 const Nav = props => {
+  const { loggedInUser, logOutUser } = props;
   return (
     <nav>
       <ul className="nav">
@@ -14,7 +15,7 @@ const Nav = props => {
         <Link to="/articles">
           <li>Articles</li>
         </Link>
-        {!props.loggedInUser ? (
+        {!loggedInUser ? (
           <div>
             <Link to="/login">
               <li>Log in</li>
@@ -29,8 +30,8 @@ const Nav = props => {
               <li>My Profile</li>
             </Link>
             <li>
-              You're logged in as {props.loggedInUser}. Not you?{" "}
-              <button className="logoutButton" onClick={props.logOutUser}>
+              You're logged in as {loggedInUser}. Not you?{" "}
+              <button className="logoutButton" onClick={logOutUser}>
                 Log out
               </button>
             </li>

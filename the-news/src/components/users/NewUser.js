@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { postNewUser } from "../../api";
 
 // this needs work - basics set up but the actual functionality is not finished
-// dave recommends w3 schools for img upload - look into this
+// dave recommends w3 schools for img upload - look into this for avatar_url
 
 class NewUser extends Component {
   state = {
@@ -31,6 +31,7 @@ class NewUser extends Component {
   };
 
   render() {
+    const { username, name } = this.state;
     return (
       <form onSubmit={this.handleSubmit} id="NewUserForm">
         <label>Username: </label>
@@ -57,7 +58,7 @@ class NewUser extends Component {
         />{" "}
         <button
           className="submitNewUser"
-          disabled={!this.state.username || !this.state.name}
+          disabled={!username || !name}
           onClick={() => this.handleSubmit()}
         >
           Submit

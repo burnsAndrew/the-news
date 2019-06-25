@@ -18,13 +18,14 @@ class Comments extends Component {
   };
 
   render() {
+    const { loggedInUser, id } = this.props;
     return (
       <div>
         <h2>Comments</h2>
-        {this.props.loggedInUser ? (
+        {loggedInUser ? (
           <PostComment
-            username={this.props.loggedInUser}
-            id={this.props.id}
+            username={loggedInUser}
+            id={id}
             addComment={this.addComment}
           />
         ) : (
@@ -40,9 +41,9 @@ class Comments extends Component {
                   <Voting
                     votes={comment.votes}
                     id={comment.comment_id}
-                    loggedInUser={this.props.loggedInUser}
+                    loggedInUser={loggedInUser}
                   />
-                  {this.props.loggedInUser === comment.author && (
+                  {loggedInUser === comment.author && (
                     <button
                       id="comment.comment_id"
                       className="deleteButton"

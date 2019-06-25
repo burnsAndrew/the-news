@@ -31,9 +31,11 @@ class AddArticleForm extends Component {
   };
 
   render() {
+    const { loggedInUser } = this.props;
+    const { body, title } = this.state;
     return (
       <div>
-        {this.props.loggedInUser ? (
+        {loggedInUser ? (
           <form onSubmit={this.handleSubmit} id="ArticleForm">
             <h2>Write an article</h2>
             <label>Topic: </label>
@@ -59,10 +61,7 @@ class AddArticleForm extends Component {
               placeholder="Your article here..."
               size="100"
             />{" "}
-            <button
-              className="submitArticle"
-              disabled={!this.state.body || !this.state.title}
-            >
+            <button className="submitArticle" disabled={!body || !title}>
               Submit article
             </button>
           </form>

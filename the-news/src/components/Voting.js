@@ -7,23 +7,25 @@ class Voting extends Component {
   };
 
   render() {
+    const { vote } = this.state;
+    const { votes, loggedInUser, id } = this.props;
     return (
       <div className="voting">
-        <h5>Votes: {this.state.vote + this.props.votes}</h5>
+        <h5>Votes: {vote + votes}</h5>
         <button
           className="voteButtonUp"
-          disabled={this.state.vote === 1 || !this.props.loggedInUser}
+          disabled={vote === 1 || !loggedInUser}
           onClick={() => {
-            this.handleVote(this.props.id, 1);
+            this.handleVote(id, 1);
           }}
         >
           Vote up
         </button>
         <button
           className="voteButtonDown"
-          disabled={this.state.vote === -1 || !this.props.loggedInUser}
+          disabled={vote === -1 || !loggedInUser}
           onClick={() => {
-            this.handleVote(this.props.id, -1);
+            this.handleVote(id, -1);
           }}
         >
           Vote down
@@ -33,12 +35,14 @@ class Voting extends Component {
   }
 
   handleVote = (id, directionOfVote) => {
-    if (this.props.type === "article") {
+    const { type } = this.props;
+    const { vote } = this.state;
+    if (type === "article") {
       patchSingleArticle(id, { inc_votes: directionOfVote });
-    } else if (this.props.type === "comment") {
+    } else if (type === "comment") {
       patchSingleComment(id, { inc_votes: directionOfVote });
     }
-    this.setState({ vote: this.state.vote + directionOfVote });
+    this.setState({ vote: vote + directionOfVote });
   };
 }
 

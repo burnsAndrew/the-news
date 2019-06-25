@@ -10,6 +10,7 @@ class SingleArticle extends Component {
 
   render() {
     const { article } = this.state;
+    const { loggedInUser, article_id } = this.props;
     return (
       <div>
         <div className="singleArticle">
@@ -20,13 +21,13 @@ class SingleArticle extends Component {
             votes={article.votes}
             id={article.article_id}
             type={"article"}
-            loggedInUser={this.props.loggedInUser}
+            loggedInUser={loggedInUser}
           />
         </div>
         <Comments
           path="/articles/:article_id"
-          id={this.props.article_id}
-          loggedInUser={this.props.loggedInUser}
+          id={article_id}
+          loggedInUser={loggedInUser}
         />
       </div>
     );
