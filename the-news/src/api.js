@@ -91,12 +91,41 @@ export const postNewArticle = (article_id, articleToPost) => {
 
 export const postNewUser = ({ username, name, avatar_url }) => {
   return axios
-    .post(`${baseUrl}/users`, {
-      username: username,
-      name: name,
-      avatar_url: avatar_url
+    .post(`${baseUrl}users`, {
+      username,
+      name,
+      avatar_url
     })
     .then(({ data: { user } }) => {
       return user;
+    });
+};
+
+export const deleteArticle = article_id => {
+  return axios
+    .delete(`${baseUrl}articles/${article_id}`)
+    .then(({ data: { article } }) => {
+      return article;
+    });
+};
+
+export const getAllUsers = query => {
+  return axios
+    .get(`${baseUrl}users`, {
+      params: query
+    })
+    .then(({ data: { users } }) => {
+      return users;
+    });
+};
+
+export const postNewTopic = ({ slug, description }) => {
+  return axios
+    .post(`${baseUrl}topics`, {
+      slug,
+      description
+    })
+    .then(({ data: { topic } }) => {
+      return topic;
     });
 };

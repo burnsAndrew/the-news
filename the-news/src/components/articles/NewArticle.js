@@ -20,7 +20,9 @@ class AddArticleForm extends Component {
       username: this.props.username,
       title: this.state.title,
       topics: this.state.topics,
-      body: this.state.body
+      body: this.state.body,
+      comment_count: 0,
+      votes: 0
     };
 
     postNewArticle(this.props.id, post).then(article => {
@@ -30,36 +32,47 @@ class AddArticleForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} id="ArticleForm">
-        <label>Title: </label>
-        <input
-          onChange={this.handleChange}
-          type="text"
-          name="title"
-          id="titleinput"
-          placeholder="What is your article called?"
-        />{" "}
-        <label>Body: </label>
-        <input
-          onChange={this.handleChange}
-          type="text"
-          name="body"
-          id="bodyinput"
-          placeholder="Your article here..."
-        />{" "}
-        <label>Topic: </label>
-        <select onChange={this.handleChange} name="topic" id="topicSelect">
-          <option value="Coding">Coding</option>
-          <option value="Cooking">Cooking</option>
-          <option value="Football">Football</option>
-        </select>{" "}
-        <button
-          className="submitArticle"
-          disabled={!this.state.body || !this.state.topic || !this.state.title}
-        >
-          Submit article
-        </button>
-      </form>
+      <div>
+        {this.props.loggedInUser ? (
+          <form onSubmit={this.handleSubmit} id="ArticleForm">
+            <h2>Write an article</h2>
+            <label>Topic: </label>
+            <select onChange={this.handleChange} name="topic" id="topicSelect">
+              <option value="Coding">Coding</option>
+              <option value="Cooking">Cooking</option>
+              <option value="Football">Football</option>
+            </select>{" "}
+            <label>Title: </label>
+            <input
+              onChange={this.handleChange}
+              type="text"
+              name="title"
+              id="titleinput"
+              placeholder="What is your article called?"
+            />{" "}
+            <label>Your story: </label>
+            <input
+              onChange={this.handleChange}
+              type="text"
+              name="body"
+              id="bodyinput"
+              placeholder="Your article here..."
+              size="100"
+            />{" "}
+            <button
+              className="submitArticle"
+              disabled={!this.state.body || !this.state.title}
+            >
+              Submit article
+            </button>
+          </form>
+        ) : (
+          <h6>
+            (if you would like to add a story, please log in / create an
+            account)
+          </h6>
+        )}
+      </div>
     );
   }
 }

@@ -13,9 +13,9 @@ class SingleArticle extends Component {
     return (
       <div>
         <div className="singleArticle">
-          <h1>{article.title}</h1>
-          <h2>Written By: {article.author}</h2>
-          <h4>{article.body}</h4>
+          <h2>{article.title}</h2>
+          <h3>Written By: {article.author}</h3>
+          <h5>{article.body}</h5>
           <Voting
             votes={article.votes}
             id={article.article_id}

@@ -17,8 +17,10 @@ class ArticlesList extends Component {
   }
 
   render() {
+    const { listOfArticles } = this.state;
     return (
       <div>
+        {/* <Sorting /> */}
         <div className="sort">
           <h3>Sort By:</h3>
           <button
@@ -41,11 +43,11 @@ class ArticlesList extends Component {
           </button>
         </div>
         <div>
-          <AddArticleForm />
+          <AddArticleForm loggedInUser={this.props.loggedInUser} />
         </div>
         <ul className="articlesList" key="articles">
-          {this.state.listOfArticles &&
-            this.state.listOfArticles.map(article => {
+          {listOfArticles &&
+            listOfArticles.map(article => {
               return (
                 <div>
                   <Link
@@ -53,13 +55,13 @@ class ArticlesList extends Component {
                     to={`/articles/${article.article_id}`}
                   >
                     <li className="articleCard">
-                      <h1>{article.title}</h1>
+                      <h2>{article.title}</h2>
                     </li>
                   </Link>
-                  <h2>Written By: {article.author}</h2>
-                  <h3>Topic: {article.topic}</h3>
-                  <h4>Votes: {article.votes}</h4>
-                  <h4>Comments: {article.comment_count}</h4>
+                  <h3>Written By: {article.author}</h3>
+                  <h4>Topic: {article.topic}</h4>
+                  <h5>Votes: {article.votes}</h5>
+                  <h5>Comments: {article.comment_count}</h5>
                 </div>
               );
             })}

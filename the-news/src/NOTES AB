@@ -1,0 +1,87 @@
+plan for this week
+
+m - planning
+t - error handling
+w - voting and optimistic rendering
+t - Q&A and pagination
+f - hand in by now to tutor
+
+m - final submissions
+
+Paul's example plan for an app (on paper, I have done it on screen)
+
+view 1: "/", maybe "/topics/:topic"?
+
+header
+links to topics
+log in information
+sortby options
+list of all the articles, with each one being clickable
+
+axios reqs:
+api/articles
+api/topics
+
+view 2: "/articles/:article_id"
+header
+links to topics
+log in information
+sortby options
+individual articles
+comments
+
+axios reqs:
+api/articles/:article_id
+api/topics
+api/articles/:article_id/comments
+
+#############
+APP STRUCTURE
+
+app
+ - header
+   - loggedInUser
+ - nav
+   - topics
+Router
+ - articleslist
+   - articlecard
+     - information
+     - voter
+/Router
+
+app 
+ - header
+   - loggedInUser
+- nav
+  - topics
+Router
+- singlearticle
+  - comments
+/Router
+
+......
+Note from question - don't use dropdowns for the topics as it makes the routing tricky.
+find a balance between making it easy for the user but also shows that i have put in some work.
+
+.......
+in articlelist.js, make sure that i destructure this.state where possible
+
+eg 
+
+class article list extends component
+state = {
+  articles: []
+}
+render
+const { articles } = this.state
+return <section>
+{articles.map(article => (
+<p>{article.title}</p>
+))}
+</section>
+
+extract the articlecard from articleslist and make it a new component
+
+..............
+if its in the url, eg /cooking, it is in props, so we can use this as a query

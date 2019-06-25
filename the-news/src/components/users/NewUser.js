@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { postNewUser } from "../../api";
 
+// this needs work - basics set up but the actual functionality is not finished
+// dave recommends w3 schools for img upload - look into this
+
 class NewUser extends Component {
   state = {
     username: "",
@@ -51,7 +54,14 @@ class NewUser extends Component {
           name="avatar_url"
           id="avatar_urlInput"
           placeholder="Enter your avatar details..."
-        />
+        />{" "}
+        <button
+          className="submitNewUser"
+          disabled={!this.state.username || !this.state.name}
+          onClick={() => this.handleSubmit()}
+        >
+          Submit
+        </button>
       </form>
     );
   }

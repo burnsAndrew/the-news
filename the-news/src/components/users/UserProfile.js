@@ -16,8 +16,8 @@ class User extends Component {
     const { user } = this.state;
     return (
       <div className="userProfile">
-        <h1>Welcome, {user.name}</h1>
-        <h2>Username: {user.username}</h2>
+        <h2>Welcome, {user.name}</h2>
+        <h3>Username: {user.username}</h3>
         <img src={user.avatar_url} alt="user's avatar" />
       </div>
     );

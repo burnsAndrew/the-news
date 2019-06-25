@@ -9,7 +9,7 @@ class Voting extends Component {
   render() {
     return (
       <div className="voting">
-        <h4>Votes: {this.state.vote + this.props.votes}</h4>
+        <h5>Votes: {this.state.vote + this.props.votes}</h5>
         <button
           className="voteButtonUp"
           disabled={this.state.vote === 1 || !this.props.loggedInUser}

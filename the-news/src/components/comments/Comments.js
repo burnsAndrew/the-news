@@ -20,7 +20,7 @@ class Comments extends Component {
   render() {
     return (
       <div>
-        <h1>Comments</h1>
+        <h2>Comments</h2>
         {this.props.loggedInUser ? (
           <PostComment
             username={this.props.loggedInUser}
@@ -28,14 +28,14 @@ class Comments extends Component {
             addComment={this.addComment}
           />
         ) : (
-          <h2>Please log in to join the discussion</h2>
+          <h3>Please log in to join the discussion</h3>
         )}
         <ul className="comments">
           {this.state.comments.map(comment => {
             return (
               <li className="comment" key={comment.comment_id}>
-                <h3>Comment By: {comment.author}</h3>
-                <h4>{comment.body}</h4>
+                <h4>Comment By: {comment.author}</h4>
+                <h5>{comment.body}</h5>
                 <div className="voting">
                   <Voting
                     votes={comment.votes}

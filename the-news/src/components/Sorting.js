@@ -2,7 +2,7 @@ import React from "react";
 
 //sort isn't working at the moment - need to look at state or props situation as it is undefined
 
-function Sorting() {
+const Sorting = () => {
   return (
     <div className="sort">
       <h3>Sort By:</h3>
@@ -26,6 +26,6 @@ function Sorting() {
       </button>
     </div>
   );
-}
+};
 
 export default Sorting;
