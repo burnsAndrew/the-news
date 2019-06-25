@@ -39,7 +39,7 @@ class SingleArticle extends Component {
       .then(article => {
         this.setState({ article: article });
       })
-      .catch(error =>
+      .catch(err =>
         navigate("/error", {
           state: { displayerror: "That Article Does Not Exist" }
         })

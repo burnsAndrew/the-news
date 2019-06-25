@@ -61,27 +61,7 @@ Router
 /Router
 
 ......
-Note from question - don't use dropdowns for the topics as it makes the routing tricky.
+Note from Josh SA's question - don't use dropdowns for the topics as it makes the routing tricky.
 find a balance between making it easy for the user but also shows that i have put in some work.
 
-.......
-in articlelist.js, make sure that i destructure this.state where possible
 
-eg 
-
-class article list extends component
-state = {
-  articles: []
-}
-render
-const { articles } = this.state
-return <section>
-{articles.map(article => (
-<p>{article.title}</p>
-))}
-</section>
-
-extract the articlecard from articleslist and make it a new component
-
-..............
-if its in the url, eg /cooking, it is in props, so we can use this as a query

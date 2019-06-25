@@ -11,6 +11,7 @@ class Topics extends Component {
   render() {
     return (
       <div className="topics">
+        <h2>Click on a topic below:</h2>
         <ul>
           {this.state.topics &&
             this.state.topics.map(topic => {
