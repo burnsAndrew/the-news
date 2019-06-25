@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
 import { getArticles, sortArticles } from "../../api";
-// import Sorting from "../Sorting";
 import "../../App.css";
 import AddArticleForm from "./NewArticle";
 
@@ -20,7 +19,6 @@ class ArticlesList extends Component {
     const { listOfArticles } = this.state;
     return (
       <div>
-        {/* <Sorting handleSort={this.handleSort} /> */}
         <div className="sort">
           <h3>Sort By:</h3>
           <button

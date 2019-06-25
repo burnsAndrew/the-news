@@ -3,13 +3,14 @@ import "./App.css";
 import { Router, navigate } from "@reach/router";
 import Header from "./components/Header";
 import Nav from "./components/Nav";
-import Home from "./components/Home";
 import Topics from "./components/topics/Topics";
+import Home from "./components/Home";
 import ArticlesList from "./components/articles/ArticlesList";
 import SingleArticle from "./components/articles/SingleArticle";
 import User from "./components/users/UserProfile";
 import NewUser from "./components/users/NewUser";
 import LogInBox from "./components/LogInBox";
+import Error from "./components/Error";
 
 class App extends Component {
   state = {
@@ -34,10 +35,10 @@ class App extends Component {
       <div className="App">
         <Header />
         <Nav loggedInUser={loggedInUser} logOutUser={this.logOutUser} />
+
         <Router>
           <Home path="/" />
           <Topics path="/topics" />
-
           <LogInBox path="/login" logInUser={this.logInUser} />
           <NewUser path="/createaccount" />
           <ArticlesList path="/articles" loggedInUser={loggedInUser} />
@@ -47,6 +48,7 @@ class App extends Component {
             loggedInUser={loggedInUser}
           />
           <User path="/user" loggedInUser={loggedInUser} />
+          <Error path="/error" />
         </Router>
       </div>
     );

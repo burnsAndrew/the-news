@@ -34,9 +34,12 @@ class LogInBox extends Component {
       .then(user => {
         return this.props.logInUser(user.username);
       })
-      .catch(error =>
+      .catch(err =>
         navigate("/error", {
-          state: { displayerror: "That User Does Not Exist" }
+          state: {
+            displayerror:
+              "That User Does Not Exist. Click above to create an account"
+          }
         })
       );
   };

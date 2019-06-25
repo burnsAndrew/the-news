@@ -3,6 +3,7 @@ import { postNewUser } from "../../api";
 
 // this needs work - basics set up but the actual functionality is not finished
 // dave recommends w3 schools for img upload - look into this for avatar_url
+// also, does my backend allow me to have avatar_url as optional (EG not nullable)?
 
 class NewUser extends Component {
   state = {

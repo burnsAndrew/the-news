@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { navigate } from "@reach/router";
 import { getSingleArticle } from "../../api";
 import Comments from "../comments/Comments";
 import Voting from "../Voting";
@@ -34,9 +35,15 @@ class SingleArticle extends Component {
   }
 
   componentDidMount() {
-    getSingleArticle(this.props.article_id).then(article => {
-      this.setState({ article: article });
-    });
+    getSingleArticle(this.props.article_id)
+      .then(article => {
+        this.setState({ article: article });
+      })
+      .catch(error =>
+        navigate("/error", {
+          state: { displayerror: "That Article Does Not Exist" }
+        })
+      );
   }
 }
 

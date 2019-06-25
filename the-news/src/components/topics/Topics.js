@@ -33,6 +33,8 @@ class Topics extends Component {
       this.setState({ topics: topics });
     });
   }
+
+  componentDidUpdate() {}
 }
 
 export default Topics;
