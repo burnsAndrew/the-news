@@ -34,7 +34,11 @@ class NewUser extends Component {
   render() {
     const { username, name } = this.state;
     return (
-      <form onSubmit={this.handleSubmit} id="NewUserForm">
+      <form
+        onSubmit={this.handleSubmit}
+        id="NewUserForm"
+        className="newUserForm"
+      >
         <label>Username: </label>
         <input
           onChange={this.handleChange}
@@ -58,7 +62,7 @@ class NewUser extends Component {
           placeholder="Enter your avatar details..."
         />{" "}
         <button
-          className="submitNewUser"
+          className="submitButton"
           disabled={!username || !name}
           onClick={() => this.handleSubmit()}
         >

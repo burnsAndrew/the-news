@@ -11,7 +11,7 @@ class LogInBox extends Component {
     const { usernameInput } = this.state;
     return (
       <div>
-        <div className="LogInBox">
+        <div className="logInBox">
           <h2>Enter Your Username:</h2>
           <form onSubmit={this.handleSubmit}>
             <input onChange={this.handleInput} type="text" />

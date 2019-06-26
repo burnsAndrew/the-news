@@ -20,9 +20,7 @@ class AddArticleForm extends Component {
       username: this.props.username,
       title: this.state.title,
       topics: this.state.topics,
-      body: this.state.body,
-      comment_count: 0,
-      votes: 0
+      body: this.state.body
     };
 
     postNewArticle(this.props.id, post).then(article => {
@@ -34,9 +32,13 @@ class AddArticleForm extends Component {
     const { loggedInUser } = this.props;
     const { body, title } = this.state;
     return (
-      <div>
+      <div className="newArticle">
         {loggedInUser ? (
-          <form onSubmit={this.handleSubmit} id="ArticleForm">
+          <form
+            onSubmit={this.handleSubmit}
+            id="ArticleForm"
+            className="articleForm"
+          >
             <h2>Write an article</h2>
             <label>Topic: </label>
             <select onChange={this.handleChange} name="topic" id="topicSelect">

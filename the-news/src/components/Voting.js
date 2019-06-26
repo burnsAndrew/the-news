@@ -13,7 +13,7 @@ class Voting extends Component {
       <div className="voting">
         <h5>Votes: {vote + votes}</h5>
         <button
-          className="voteButtonUp"
+          className="voteUpButton"
           disabled={vote === 1 || !loggedInUser}
           onClick={() => {
             this.handleVote(id, 1);
@@ -22,7 +22,7 @@ class Voting extends Component {
           Vote up
         </button>
         <button
-          className="voteButtonDown"
+          className="voteDownButton"
           disabled={vote === -1 || !loggedInUser}
           onClick={() => {
             this.handleVote(id, -1);

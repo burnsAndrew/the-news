@@ -28,7 +28,7 @@ class PostComment extends Component {
     const { userInput } = this.state;
     return (
       <div className="postComment">
-        <h2>What do you think?</h2>
+        <h3>What do you think?</h3>
         <form action="" onSubmit={this.handleSubmit}>
           <textarea
             id="commentInput"
@@ -38,7 +38,7 @@ class PostComment extends Component {
             className="newCommentBox"
             placeholder="Share your thoughts here..."
           />{" "}
-          <button className="submitComment" disabled={!userInput}>
+          <button className="submitButton" disabled={!userInput}>
             Submit
           </button>
         </form>

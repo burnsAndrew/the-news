@@ -40,19 +40,19 @@ class ArticlesList extends Component {
             Votes
           </button>
         </div>
-        <div>
+        <div className="addArticleHeader">
           <AddArticleForm loggedInUser={this.props.loggedInUser} />
         </div>
         <ul className="articlesList" key="articles">
           {listOfArticles &&
             listOfArticles.map(article => {
               return (
-                <div>
+                <div className="articleCard">
                   <Link
                     key={article.article_id}
                     to={`/articles/${article.article_id}`}
                   >
-                    <li className="articleCard">
+                    <li className="articleCardHeader">
                       <h2>{article.title}</h2>
                     </li>
                   </Link>

@@ -117,7 +117,7 @@ export const getAllUsers = query => {
     .then(({ data: { users } }) => {
       return users;
     });
-};
+}; // not sure if I will need this one yet?  Here just in case
 
 export const postNewTopic = ({ slug, description }) => {
   return axios

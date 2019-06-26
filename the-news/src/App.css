@@ -10,6 +10,8 @@
   align-items: center;
   justify-content: center;
   color: rgb(0, 0, 0);
+  padding: 20px;
+  border-width: 5px;
 }
 
 .App-logo {
@@ -22,30 +24,149 @@ ul {
   list-style: none;
 }
 
+/* FONT SIZES */
 h1 {
-  font-size: 8eh;
+  font-size: 4em;
 }
 
 h2 {
-  font-size: 6eh;
+  font-size: 2em;
 }
 
 h3 {
-  font-size: 4eh;
+  font-size: 1.5em;
 }
 
 h4 {
-  font-size: 3eh;
+  font-size: 1em;
 }
 
 h5 {
-  font-size: 2eh;
+  font-size: 0.75em;
 }
 
 h6 {
-  font-size: 1eh;
+  font-size: 0.5em;
 }
 
+.author {
+  text-align: left;
+}
+
+/* COMPONENTS */
+.header {
+  background-color: #bdc3c7;
+}
+
+.nav {
+}
+
+.home {
+}
+
+.logInBox {
+}
+
+.loggedIn {
+}
+
+.sort {
+}
+
+.articlesList {
+}
+
+.articleCard {
+  background-color: #bdc3c7;
+  margin: 20px;
+  border-radius: 0.1em;
+  padding: 1em;
+}
+
+.articleCardHeader {
+}
+
+.addArticleHeader {
+}
+
+.newArticle {
+}
+
+.singleArticle {
+  margin: 20px;
+  background-color: #bdc3c7;
+  border-radius: 0.1em;
+  padding: 1em;
+}
+
+.articleForm {
+}
+
+.commentsList {
+}
+
+.commentCard {
+  margin-left: 0px;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  background-color: #bdc3c7;
+  /* border-style: solid; */
+  border-radius: 0.1em;
+  padding: 1em;
+}
+
+.newCommentBox {
+}
+
+.voting {
+}
+
+.postComment {
+}
+
+.topics {
+}
+
+.topic {
+}
+
+.newUserForm {
+}
+
+.userProfile {
+}
+
+/* BUTTONS */
+
+.sortbyDateButton {
+}
+
+.sortbyCommentCountButton {
+}
+
+.sortbyVoteCountButton {
+}
+
+.deleteButton {
+}
+
+.submitButton {
+}
+
+.logInButton {
+}
+
+.logoutButton {
+}
+
+.voteUpButton {
+}
+
+.voteDownButton {
+}
+
+/* ANIMATION */
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

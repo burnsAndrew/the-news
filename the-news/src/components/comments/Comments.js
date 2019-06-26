@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { getCommentsByArticle, deleteComment } from "../../api";
 import Voting from "../Voting";
-import PostComment from "./NewComment";
+import PostComment from "./PostComment";
 
 class Comments extends Component {
   state = {
@@ -20,7 +20,7 @@ class Comments extends Component {
   render() {
     const { loggedInUser, id } = this.props;
     return (
-      <div>
+      <div className="commentsHeader">
         <h2>Comments</h2>
         {loggedInUser ? (
           <PostComment
@@ -31,11 +31,11 @@ class Comments extends Component {
         ) : (
           <h3>Please log in to join the discussion</h3>
         )}
-        <ul className="comments">
+        <ul className="commentsList">
           {this.state.comments.map(comment => {
             return (
-              <li className="comment" key={comment.comment_id}>
-                <h4>Comment By: {comment.author}</h4>
+              <li className="commentCard" key={comment.comment_id}>
+                <h4 className="author">Comment By: {comment.author}</h4>
                 <h5>{comment.body}</h5>
                 <div className="voting">
                   <Voting
@@ -69,19 +69,11 @@ class Comments extends Component {
     });
   }
 
-  //need a componentDidUpdate here, to make it render??
-  // then, can i put it into it's own component... NewComment.js?
+  //working on this...
 
-  addNewComment = comment => {
-    this.setState(prevState => {
-      const newComments = prevState.comments.map(comment => {
-        return { ...comment };
-      });
-      return { comments: [comment, ...newComments] };
-    });
-  };
-
-  // to here
+  fetchCommentsByArticle({ postNewComment }) {
+    this.setState({ comments: [...this.state.comments, postNewComment] });
+  }
 }
 
 export default Comments;

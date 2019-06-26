@@ -1,12 +1,18 @@
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
-import { getSingleArticle } from "../../api";
+import { getSingleArticle, deleteArticle } from "../../api";
 import Comments from "../comments/Comments";
 import Voting from "../Voting";
 
 class SingleArticle extends Component {
   state = {
     article: []
+  };
+
+  handleDelete = id => {
+    deleteArticle(id).then(article => {
+      this.setState({ article: article });
+    });
   };
 
   render() {
@@ -16,7 +22,7 @@ class SingleArticle extends Component {
       <div>
         <div className="singleArticle">
           <h2>{article.title}</h2>
-          <h3>Written By: {article.author}</h3>
+          <h3 className="author">Written By: {article.author}</h3>
           <h5>{article.body}</h5>
           <Voting
             votes={article.votes}
@@ -24,6 +30,17 @@ class SingleArticle extends Component {
             type={"article"}
             loggedInUser={loggedInUser}
           />
+          {loggedInUser === article.author && (
+            <button
+              id="article.article_id"
+              className="deleteButton"
+              onClick={() => {
+                this.handleDelete(article.article_id);
+              }}
+            >
+              Delete
+            </button>
+          )}
         </div>
         <Comments
           path="/articles/:article_id"
