@@ -68,10 +68,10 @@ class AddArticleForm extends Component {
             </button>
           </form>
         ) : (
-          <h6>
+          <h5>
             (if you would like to add a story, please log in / create an
             account)
-          </h6>
+          </h5>
         )}
       </div>
     );

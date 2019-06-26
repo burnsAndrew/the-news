@@ -22,7 +22,8 @@ class SingleArticle extends Component {
       <div>
         <div className="singleArticle">
           <h2>{article.title}</h2>
-          <h3 className="author">Written By: {article.author}</h3>
+          <h3 className="author">Written by: {article.author}</h3>
+          <h4>Topic: {article.topic}</h4>
           <h5>{article.body}</h5>
           <Voting
             votes={article.votes}
@@ -30,6 +31,7 @@ class SingleArticle extends Component {
             type={"article"}
             loggedInUser={loggedInUser}
           />
+          <h5>Number of comments: {article.comment_count}</h5>
           {loggedInUser === article.author && (
             <button
               id="article.article_id"

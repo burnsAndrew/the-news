@@ -10,34 +10,43 @@ class ArticlesList extends Component {
     sortBy: null
   };
 
-  setSortBy = sortBy => {
-    this.setState({ sortBy });
+  setSortBy = event => {
+    this.setState({ sortBy: event.currentTarget.value });
   };
 
   render() {
     const { listOfArticles } = this.state;
-
     return (
       <div>
         <div className="sort">
           <h3>Sort By:</h3>
           <button
             className="sortbyDateButton"
-            onClick={() => this.setSortBy("created_at")}
+            onClick={this.setSortBy}
+            value={"created_at"}
           >
             Date
           </button>
           <button
             className="sortbyCommentCountButton"
-            onClick={() => this.setSortBy("comment_count")}
+            onClick={this.setSortBy}
+            value={"comment_count"}
           >
             Number Of Comments
           </button>
           <button
             className="sortbyVoteCountButton"
-            onClick={() => this.setSortBy("votes")}
+            onClick={this.setSortBy}
+            value={"votes"}
           >
             Votes
+          </button>
+          <button
+            className="sortbyAuthorButton"
+            onClick={this.setSortBy}
+            value={"author"}
+          >
+            Author
           </button>
         </div>
         <div className="addArticleHeader">
@@ -69,19 +78,21 @@ class ArticlesList extends Component {
   }
 
   componentDidMount() {
-    const query = { sort_by: this.props.sort_by };
+    const { topic } = this.props;
+    const query = { topic: topic };
     getArticles(query).then(articles => {
       this.setState({ listOfArticles: articles });
     });
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const sort_byChange = prevProps.sort_by !== this.props.sort_by;
-    if (sort_byChange) {
-      this.getArticles().then(articles => {
+    const { topic } = this.props;
+    const { sortBy } = this.state;
+    const query = { sort_by: sortBy, topic: topic };
+    (sortBy !== prevState.sortBy || topic !== prevProps.topic) &&
+      getArticles(query).then(articles => {
         this.setState({ listOfArticles: articles });
       });
-    }
   }
 }
 

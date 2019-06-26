@@ -29,7 +29,7 @@ class Comments extends Component {
             commentsAdder={this.commentsAdder}
           />
         ) : (
-          <h3>Please log in to join the discussion</h3>
+          <h4>Please log in to join the discussion</h4>
         )}
         <ul className="commentsList" key="comments">
           {this.state.comments.map(comment => {
