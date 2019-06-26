@@ -1,9 +1,9 @@
 .App {
   text-align: center;
-  /* font-family: "Monoton", cursive; */
+  font-family: "Monoton", cursive;
   font-family: "Roboto Mono", monospace;
   font-family: "Roboto", sans-serif;
-  background-color: #ffffff;
+  background-color: #f8e1e1;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -50,11 +50,15 @@ h6 {
 }
 
 .author {
+  background-color: white;
   text-align: left;
 }
 
 /* COMPONENTS */
 .header {
+}
+
+.appName {
   background-color: #bdc3c7;
 }
 
@@ -71,9 +75,11 @@ h6 {
 }
 
 .sort {
+  border-style: solid;
 }
 
 .articlesList {
+  border-style: dotted;
 }
 
 .articleCard {
@@ -90,6 +96,7 @@ h6 {
 }
 
 .newArticle {
+  border-style: dashed;
 }
 
 .singleArticle {
@@ -102,7 +109,12 @@ h6 {
 .articleForm {
 }
 
+.comments {
+  border-style: dotted;
+}
+
 .commentsList {
+  border-style: double;
 }
 
 .commentCard {
@@ -111,7 +123,6 @@ h6 {
   margin-top: 20px;
   margin-bottom: 30px;
   background-color: #bdc3c7;
-  /* border-style: solid; */
   border-radius: 0.1em;
   padding: 1em;
 }
@@ -126,9 +137,11 @@ h6 {
 }
 
 .topics {
+  border-style: dotted;
 }
 
 .topic {
+  background-color: white;
 }
 
 .newUserForm {

@@ -20,18 +20,18 @@ class Comments extends Component {
   render() {
     const { loggedInUser, id } = this.props;
     return (
-      <div className="commentsHeader">
+      <div className="comments">
         <h2>Comments</h2>
         {loggedInUser ? (
           <PostComment
             username={loggedInUser}
             id={id}
-            addComment={this.addComment}
+            commentsAdder={this.commentsAdder}
           />
         ) : (
           <h3>Please log in to join the discussion</h3>
         )}
-        <ul className="commentsList">
+        <ul className="commentsList" key="comments">
           {this.state.comments.map(comment => {
             return (
               <li className="commentCard" key={comment.comment_id}>
@@ -42,6 +42,7 @@ class Comments extends Component {
                     votes={comment.votes}
                     id={comment.comment_id}
                     loggedInUser={loggedInUser}
+                    type={"comment"}
                   />
                   {loggedInUser === comment.author && (
                     <button
@@ -69,11 +70,11 @@ class Comments extends Component {
     });
   }
 
-  //working on this...
-
-  fetchCommentsByArticle({ postNewComment }) {
-    this.setState({ comments: [...this.state.comments, postNewComment] });
-  }
+  commentsAdder = newComment => {
+    this.setState(prevState => {
+      return { comments: [newComment, ...prevState.comments] };
+    });
+  };
 }
 
 export default Comments;

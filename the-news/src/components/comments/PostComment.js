@@ -20,7 +20,7 @@ class PostComment extends Component {
     };
 
     postNewComment(this.props.id, post).then(comment => {
-      return comment;
+      this.props.commentsAdder(comment);
     });
   };
 

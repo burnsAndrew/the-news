@@ -24,7 +24,7 @@ class Topics extends Component {
               );
             })}
         </ul>
-        <ArticlesList />
+        <ArticlesList loggedInUser={this.props.loggedInUser} />
       </div>
     );
   }

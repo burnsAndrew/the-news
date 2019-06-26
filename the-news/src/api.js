@@ -1,9 +1,9 @@
 import axios from "axios";
 const baseUrl = "https://ab-nc-news.herokuapp.com/api/";
 
-export const getArticles = query => {
+export const getArticles = ({ topic, sort_by }) => {
   return axios
-    .get(`${baseUrl}articles`, { params: query })
+    .get(`${baseUrl}articles`, { params: { topic, sort_by } })
     .then(({ data: { articles } }) => {
       return articles;
     });
@@ -33,13 +33,13 @@ export const getUser = username => {
   });
 };
 
-export const sortArticles = query => {
-  return axios
-    .get(`${baseUrl}articles${query}`, { params: query })
-    .then(({ data: { articles } }) => {
-      return articles;
-    });
-};
+// export const sortArticles = query => {
+//   return axios
+//     .get(`${baseUrl}articles${query}`, { params: query })
+//     .then(({ data: { articles } }) => {
+//       return articles;
+//     });
+// };
 
 export const getCommentsByArticle = article_id => {
   return axios
@@ -117,7 +117,9 @@ export const getAllUsers = query => {
     .then(({ data: { users } }) => {
       return users;
     });
-}; // not sure if I will need this one yet?  Here just in case
+};
+
+// not sure if I will need this one yet?  Here just in case
 
 export const postNewTopic = ({ slug, description }) => {
   return axios

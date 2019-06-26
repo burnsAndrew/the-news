@@ -1,41 +1,41 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
-import { getArticles, sortArticles } from "../../api";
+import { getArticles } from "../../api";
 import "../../App.css";
-import AddArticleForm from "./NewArticle";
+import AddArticleForm from "./AddArticle";
 
 class ArticlesList extends Component {
   state = {
-    listOfArticles: []
+    listOfArticles: [],
+    sortBy: null
   };
 
-  handleSort(query) {
-    sortArticles(query).then(articles => {
-      this.setState({ listOfArticles: articles });
-    });
-  }
+  setSortBy = sortBy => {
+    this.setState({ sortBy });
+  };
 
   render() {
     const { listOfArticles } = this.state;
+
     return (
       <div>
         <div className="sort">
           <h3>Sort By:</h3>
           <button
             className="sortbyDateButton"
-            onClick={() => this.handleSort("?sort_by=created_at")}
+            onClick={() => this.setSortBy("created_at")}
           >
             Date
           </button>
           <button
             className="sortbyCommentCountButton"
-            onClick={() => this.handleSort("?sort_by=comment_count")}
+            onClick={() => this.setSortBy("comment_count")}
           >
             Number Of Comments
           </button>
           <button
             className="sortbyVoteCountButton"
-            onClick={() => this.handleSort("?sort_by=votes")}
+            onClick={() => this.setSortBy("votes")}
           >
             Votes
           </button>
@@ -69,10 +69,19 @@ class ArticlesList extends Component {
   }
 
   componentDidMount() {
-    const query = { topic: this.props.topic };
+    const query = { sort_by: this.props.sort_by };
     getArticles(query).then(articles => {
       this.setState({ listOfArticles: articles });
     });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const sort_byChange = prevProps.sort_by !== this.props.sort_by;
+    if (sort_byChange) {
+      this.getArticles().then(articles => {
+        this.setState({ listOfArticles: articles });
+      });
+    }
   }
 }
 

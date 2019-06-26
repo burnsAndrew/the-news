@@ -3,18 +3,18 @@ import { patchSingleComment, patchSingleArticle } from "../api";
 
 class Voting extends Component {
   state = {
-    vote: 0
+    voteChange: 0
   };
 
   render() {
-    const { vote } = this.state;
+    const { voteChange } = this.state;
     const { votes, loggedInUser, id } = this.props;
     return (
       <div className="voting">
-        <h5>Votes: {vote + votes}</h5>
+        <h5>Votes: {voteChange + votes}</h5>
         <button
           className="voteUpButton"
-          disabled={vote === 1 || !loggedInUser}
+          disabled={voteChange === 1 || !loggedInUser}
           onClick={() => {
             this.handleVote(id, 1);
           }}
@@ -23,7 +23,7 @@ class Voting extends Component {
         </button>
         <button
           className="voteDownButton"
-          disabled={vote === -1 || !loggedInUser}
+          disabled={voteChange === -1 || !loggedInUser}
           onClick={() => {
             this.handleVote(id, -1);
           }}
@@ -36,13 +36,13 @@ class Voting extends Component {
 
   handleVote = (id, directionOfVote) => {
     const { type } = this.props;
-    const { vote } = this.state;
+    const { voteChange } = this.state;
+    this.setState({ voteChange: voteChange + directionOfVote });
     if (type === "article") {
       patchSingleArticle(id, { inc_votes: directionOfVote });
     } else if (type === "comment") {
       patchSingleComment(id, { inc_votes: directionOfVote });
     }
-    this.setState({ vote: vote + directionOfVote });
   };
 }
 

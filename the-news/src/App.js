@@ -32,13 +32,13 @@ class App extends Component {
   render() {
     const { loggedInUser } = this.state;
     return (
-      <div className="App">
+      <div className="App" key="App">
         <Header />
         <Nav loggedInUser={loggedInUser} logOutUser={this.logOutUser} />
 
         <Router>
           <Home path="/" />
-          <Topics path="/topics" />
+          <Topics path="/topics" loggedInUser={loggedInUser} />
           <LogInBox path="/login" logInUser={this.logInUser} />
           <NewUser path="/createaccount" />
           <ArticlesList path="/articles" loggedInUser={loggedInUser} />
