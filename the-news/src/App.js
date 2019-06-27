@@ -9,6 +9,7 @@ import ArticlesList from "./components/articles/ArticlesList";
 import PostArticle from "./components/articles/PostArticle";
 import SingleArticle from "./components/articles/SingleArticle";
 import User from "./components/users/UserProfile";
+import UsersList from "./components/users/UsersList";
 import NewUser from "./components/users/NewUser";
 import LogInBox from "./components/LogInBox";
 import Error from "./components/Error";
@@ -53,6 +54,7 @@ class App extends Component {
             loggedInUser={loggedInUser}
           />
           <User path="/user" loggedInUser={loggedInUser} />
+          <UsersList path="/community" loggedInUser={loggedInUser} />
           <Error path="/error" />
         </Router>
       </div>

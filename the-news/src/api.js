@@ -119,6 +119,14 @@ export const getAllUsers = query => {
     });
 };
 
+export const deleteUser = username => {
+  return axios
+    .delete(`${baseUrl}users/${username}`)
+    .then(({ data: { user } }) => {
+      return user;
+    });
+};
+
 // not sure if I will need this one yet?  Here just in case
 
 export const postNewTopic = ({ slug, description }) => {

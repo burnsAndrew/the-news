@@ -37,6 +37,9 @@ const Nav = props => {
             </li>
           </div>
         )}
+        <Link to="/community">
+          <li>Community</li>
+        </Link>
       </ul>
     </nav>
   );
