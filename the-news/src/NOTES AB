@@ -1,90 +1,29 @@
-plan for this week
-
-m - planning
-t - error handling
-w - voting and optimistic rendering
-t - Q&A and pagination
-f - hand in by now to tutor
-
-m - final submissions
-
-Paul's example plan for an app (on paper, I have done it on screen)
-
-view 1: "/", maybe "/topics/:topic"?
-
-header
-links to topics
-log in information
-sortby options
-list of all the articles, with each one being clickable
-
-axios reqs:
-api/articles
-api/topics
-
-view 2: "/articles/:article_id"
-header
-links to topics
-log in information
-sortby options
-individual articles
-comments
-
-axios reqs:
-api/articles/:article_id
-api/topics
-api/articles/:article_id/comments
-
-#############
-APP STRUCTURE
-
-app
- - header
-   - loggedInUser
- - nav
-   - topics
-Router
- - articleslist
-   - articlecard
-     - information
-     - voter
-/Router
-
-app 
- - header
-   - loggedInUser
-- nav
-  - topics
-Router
-- singlearticle
-  - comments
-/Router
-
-######################################################
-Notes from wednesday lecture:
-
-optimistic rendering
-when it just shows you what you did, not what everyone did at the same time (EG facebook likes)
-rendering just for you, without having to do another fetch request
-
-there is a scale as to whether we want to optimistically render, or do a fetch for data...
-top of the scale - likes on facebook (give an indication that it happened)
-near the top - voting
-middle - deleting / posting an article / comment
-bottom of the scale - bank transaction (wait for response to confirm)
-
-...
-
 other notes - do i want to extract the article card from articles list?
+there may be other components that i want to extract too?
 
-posting a comment note:
-
-app
-  - singlearticle (state = article)
-    - comments (state = comments: [])
-      - comment 
-
+add ascending and descending buttons ( i have added order_by to the api already )
 ...
+
+######
+lecture notes from thursday 27th june 2019 at 8.30am
+Q&A and pagination
+
+maybe add extra user stuff in the state on app, eg username, user and avatar_url
+
+######
+
+pagination notes
+
+need prev and next page buttons at the bottom of the articles list
+these buttons will make a new api request
+we will need to keep track of the page in state - so state = {page: 1}
+when click next, we update the page number and componentdidupdate (if prev state page is not equal to this page)
+
+we need a total count - it will stop errors (serving up an empty array) and also allow us to disable the button
+
+in app, it's going to be articlelist
+
+
 
 
 

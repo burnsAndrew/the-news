@@ -6,6 +6,7 @@ import Nav from "./components/Nav";
 import Topics from "./components/topics/Topics";
 import Home from "./components/Home";
 import ArticlesList from "./components/articles/ArticlesList";
+import PostArticle from "./components/articles/PostArticle";
 import SingleArticle from "./components/articles/SingleArticle";
 import User from "./components/users/UserProfile";
 import NewUser from "./components/users/NewUser";
@@ -41,8 +42,12 @@ class App extends Component {
           <Topics path="/topics" loggedInUser={loggedInUser} />
           <LogInBox path="/login" logInUser={this.logInUser} />
           <NewUser path="/createaccount" />
-          <ArticlesList path="/articles" loggedInUser={loggedInUser} />
-          <ArticlesList path="/articles/topic/:topic" />
+          <ArticlesList path="/articles/*" loggedInUser={loggedInUser} />
+          <ArticlesList
+            path="/articles/topic/:topic"
+            loggedInUser={loggedInUser}
+          />
+          <PostArticle path="/postArticle" loggedInUser={loggedInUser} />
           <SingleArticle
             path="/articles/:article_id"
             loggedInUser={loggedInUser}

@@ -106,7 +106,7 @@ h6 {
   padding: 1em;
 }
 
-.articleForm {
+.newArticleForm {
 }
 
 .comments {
@@ -159,6 +159,9 @@ h6 {
 }
 
 .sortbyVoteCountButton {
+}
+
+.sortbyAuthorButton {
 }
 
 .deleteButton {

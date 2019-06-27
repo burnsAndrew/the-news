@@ -59,7 +59,7 @@ class NewUser extends Component {
         <input
           name="avatar_url"
           id="avatar_urlInput"
-          placeholder="Enter your avatar details..."
+          placeholder="Your avatar details (optional)"
         />{" "}
         <button
           className="submitButton"

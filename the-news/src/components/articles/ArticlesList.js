@@ -2,20 +2,35 @@ import React, { Component } from "react";
 import { Link } from "@reach/router";
 import { getArticles } from "../../api";
 import "../../App.css";
-import AddArticleForm from "./AddArticle";
+import PostArticle from "./PostArticle";
 
 class ArticlesList extends Component {
   state = {
-    listOfArticles: [],
-    sortBy: null
+    articles: [],
+    sort_by: null,
+    order_by: "desc",
+    page: 1
   };
 
   setSortBy = event => {
-    this.setState({ sortBy: event.currentTarget.value });
+    console.log(event.currentTarget.value);
+    this.setState({ sort_by: event.currentTarget.value });
+  };
+
+  setOrderBy = event => {
+    console.log(event.currentTarget.value);
+    this.setState({ order_by: event.currentTarget.value });
+  };
+
+  articleAdder = newArticle => {
+    this.setState(prevState => {
+      return { articles: [newArticle, ...prevState.articles] };
+    });
   };
 
   render() {
-    const { listOfArticles } = this.state;
+    const { articles } = this.state;
+    const { loggedInUser } = this.props;
     return (
       <div>
         <div className="sort">
@@ -48,13 +63,27 @@ class ArticlesList extends Component {
           >
             Author
           </button>
+          <button
+            className="orderbyAscendingButton"
+            onClick={this.setOrderBy}
+            value={"asc"}
+          >
+            Asc
+          </button>
+          <button
+            className="orderbyDescendingButton"
+            onClick={this.setOrderBy}
+            value={"desc"}
+          >
+            Desc
+          </button>
         </div>
         <div className="addArticleHeader">
-          <AddArticleForm loggedInUser={this.props.loggedInUser} />
+          <PostArticle loggedInUser={loggedInUser} />
         </div>
         <ul className="articlesList" key="articles">
-          {listOfArticles &&
-            listOfArticles.map(article => {
+          {articles &&
+            articles.map(article => {
               return (
                 <div className="articleCard">
                   <Link
@@ -79,21 +108,34 @@ class ArticlesList extends Component {
 
   componentDidMount() {
     const { topic } = this.props;
-    const query = { topic: topic };
+    const query = { topic };
     getArticles(query).then(articles => {
-      this.setState({ listOfArticles: articles });
+      this.setState({ articles: articles });
     });
   }
 
   componentDidUpdate(prevProps, prevState) {
     const { topic } = this.props;
-    const { sortBy } = this.state;
-    const query = { sort_by: sortBy, topic: topic };
-    (sortBy !== prevState.sortBy || topic !== prevProps.topic) &&
+    const { sort_by, order_by, page } = this.state;
+    const query = { sort_by, topic, order_by, page };
+
+    (sort_by !== prevState.sort_by ||
+      topic !== prevProps.topic ||
+      order_by !== prevState.order_by ||
+      page !== prevState.page) &&
       getArticles(query).then(articles => {
-        this.setState({ listOfArticles: articles });
+        this.setState({ articles: articles });
       });
   }
 }
 
 export default ArticlesList;
+
+//what i need to do later:
+// create buttons for pagination and a function:
+// <button onClick={() => {this.changePage(-1)}}></button>
+//   <button onClick={() => { this.changePage(1) }}></button>
+
+//   changePage = (direction) => {
+// this.setState((prevState) => ({page: prevState.page + direction}))
+//   }

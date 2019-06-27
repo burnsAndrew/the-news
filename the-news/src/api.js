@@ -1,9 +1,11 @@
 import axios from "axios";
 const baseUrl = "https://ab-nc-news.herokuapp.com/api/";
 
-export const getArticles = ({ topic, sort_by }) => {
+export const getArticles = ({ topic, sort_by, order_by, page }) => {
   return axios
-    .get(`${baseUrl}articles`, { params: { topic, sort_by } })
+    .get(`${baseUrl}articles`, {
+      params: { topic, sort_by, order: order_by, page }
+    })
     .then(({ data: { articles } }) => {
       return articles;
     });
@@ -32,14 +34,6 @@ export const getUser = username => {
     return user;
   });
 };
-
-// export const sortArticles = query => {
-//   return axios
-//     .get(`${baseUrl}articles${query}`, { params: query })
-//     .then(({ data: { articles } }) => {
-//       return articles;
-//     });
-// };
 
 export const getCommentsByArticle = article_id => {
   return axios
@@ -81,10 +75,24 @@ export const deleteComment = comment_id => {
     });
 };
 
-export const postNewArticle = (article_id, articleToPost) => {
+export const postNewArticle = (username, title, body, topic) => {
+  const topicName = topic.toLowerCase();
   return axios
-    .post(`${baseUrl}articles/${article_id}`, articleToPost)
-    .then(article => {
+    .post(`${baseUrl}articles/`, {
+      author: username,
+      title,
+      body,
+      topic: topicName
+    })
+    .then(({ data: { article } }) => {
+      return article;
+    });
+};
+
+export const deleteArticle = article_id => {
+  return axios
+    .delete(`${baseUrl}articles/${article_id}`)
+    .then(({ data: { article } }) => {
       return article;
     });
 };
@@ -98,14 +106,6 @@ export const postNewUser = ({ username, name, avatar_url }) => {
     })
     .then(({ data: { user } }) => {
       return user;
-    });
-};
-
-export const deleteArticle = article_id => {
-  return axios
-    .delete(`${baseUrl}articles/${article_id}`)
-    .then(({ data: { article } }) => {
-      return article;
     });
 };
 
