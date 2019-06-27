@@ -2,6 +2,7 @@
 // then, when it posts - it takes you to the article posted as a single article
 
 import React, { Component } from "react";
+import { navigate } from "@reach/router";
 import { postNewArticle } from "../../api";
 
 class PostArticle extends Component {
@@ -71,8 +72,8 @@ class PostArticle extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const { title, body, topic } = this.state;
-    const { username } = this.props;
-    postNewArticle(username, title, body, topic)
+    const { loggedInUser } = this.props;
+    postNewArticle(loggedInUser, title, body, topic)
       .then(article => {
         console.log(article);
         this.setState({
@@ -80,7 +81,7 @@ class PostArticle extends Component {
           body: "",
           topic: ""
         });
-        this.props.navigate(`/articles/${article.article_id}`);
+        navigate(`/articles/${article.article_id}`);
       })
       .catch(console.dir);
   };

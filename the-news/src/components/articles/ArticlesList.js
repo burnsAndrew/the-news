@@ -13,12 +13,10 @@ class ArticlesList extends Component {
   };
 
   setSortBy = event => {
-    console.log(event.currentTarget.value);
     this.setState({ sort_by: event.currentTarget.value });
   };
 
   setOrderBy = event => {
-    console.log(event.currentTarget.value);
     this.setState({ order_by: event.currentTarget.value });
   };
 

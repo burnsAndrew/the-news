@@ -13,6 +13,7 @@ class SingleArticle extends Component {
     deleteArticle(id).then(article => {
       this.setState({ article: article });
     });
+    navigate(`/articles`);
   };
 
   render() {
