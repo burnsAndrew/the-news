@@ -83,11 +83,8 @@ class ArticlesList extends Component {
           {articles &&
             articles.map(article => {
               return (
-                <div className="articleCard">
-                  <Link
-                    key={article.article_id}
-                    to={`/articles/${article.article_id}`}
-                  >
+                <div className="articleCard" key={article.article_id}>
+                  <Link to={`/articles/${article.article_id}`}>
                     <li className="articleCardHeader">
                       <h2>{article.title}</h2>
                     </li>

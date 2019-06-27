@@ -70,8 +70,8 @@ export const postNewComment = (article_id, body) => {
 export const deleteComment = comment_id => {
   return axios
     .delete(`${baseUrl}comments/${comment_id}`)
-    .then(({ data: { comment } }) => {
-      return comment;
+    .then(({ data: { comments } }) => {
+      return comments;
     });
 };
 
@@ -105,6 +105,7 @@ export const postNewUser = ({ username, name, avatar_url }) => {
       avatar_url
     })
     .then(({ data: { user } }) => {
+      console.log(user);
       return user;
     });
 };

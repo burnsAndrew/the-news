@@ -1,6 +1,3 @@
-// add a post article button on the articlesList, rather than what i have done - then leads you to this form
-// then, when it posts - it takes you to the article posted as a single article
-
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
 import { postNewArticle } from "../../api";
@@ -75,7 +72,6 @@ class PostArticle extends Component {
     const { loggedInUser } = this.props;
     postNewArticle(loggedInUser, title, body, topic)
       .then(article => {
-        console.log(article);
         this.setState({
           title: "",
           body: "",

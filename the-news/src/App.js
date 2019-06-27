@@ -42,7 +42,7 @@ class App extends Component {
           <Home path="/" />
           <Topics path="/topics" loggedInUser={loggedInUser} />
           <LogInBox path="/login" logInUser={this.logInUser} />
-          <NewUser path="/createaccount" />
+          <NewUser path="/createaccount" /*loggedInUser={loggedInUser}*/ />
           <ArticlesList path="/articles/*" loggedInUser={loggedInUser} />
           <ArticlesList
             path="/articles/topic/:topic"

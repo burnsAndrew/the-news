@@ -1,9 +1,6 @@
 import React, { Component } from "react";
+import { navigate } from "@reach/router";
 import { postNewUser } from "../../api";
-
-// this needs work - basics set up but the actual functionality is not finished
-// dave recommends w3 schools for img upload - look into this for avatar_url
-// also, does my backend allow me to have avatar_url as optional (EG not nullable)?
 
 class NewUser extends Component {
   state = {
@@ -12,27 +9,9 @@ class NewUser extends Component {
     avatar_url: ""
   };
 
-  handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
-  };
-
-  handleSubmit = event => {
-    event.eventDefault();
-    this.setState({ username: "", name: "", avatar_url: "" });
-
-    const post = {
-      username: this.state.username,
-      name: this.state.name,
-      avatar_url: this.state.avatar_url
-    };
-
-    postNewUser(this.props.id, post).then(user => {
-      return user;
-    });
-  };
-
   render() {
-    const { username, name } = this.state;
+    const { username, name, avatar_url } = this.state;
+    // const { loggedInUser } = this.props;
     return (
       <form
         onSubmit={this.handleSubmit}
@@ -44,7 +23,7 @@ class NewUser extends Component {
           onChange={this.handleChange}
           type="text"
           name="username"
-          id="usernameInput"
+          value={username}
           placeholder="Create a cool username..."
         />{" "}
         <label>Name: </label>
@@ -52,25 +31,37 @@ class NewUser extends Component {
           onChange={this.handleChange}
           type="text"
           name="name"
-          id="nameInput"
+          value={name}
           placeholder="Enter your name..."
         />{" "}
         <label>Avatar: </label>
         <input
+          onChange={this.handleChange}
+          type="text"
           name="avatar_url"
-          id="avatar_urlInput"
+          value={avatar_url}
           placeholder="Your avatar details (optional)"
         />{" "}
-        <button
-          className="submitButton"
-          disabled={!username || !name}
-          onClick={() => this.handleSubmit()}
-        >
+        <button className="submitButton" disabled={!username || !name}>
           Submit
         </button>
       </form>
     );
   }
+
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
+
+  handleSubmit = event => {
+    event.eventDefault();
+    const { username, name, avatar_url } = this.state;
+    postNewUser(username, name, avatar_url).then(user => {
+      this.setState({ username: "", name: "", avatar_url: "" });
+      navigate(`/users/${username}`);
+    });
+  };
 }
 
 export default NewUser;
