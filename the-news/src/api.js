@@ -84,8 +84,9 @@ export const postNewArticle = (username, title, body, topic) => {
       body,
       topic: topicName
     })
-    .then(({ data: { articles } }) => {
-      return articles;
+    .then(({ data: { article } }) => {
+      console.log(article);
+      return article;
     });
 };
 

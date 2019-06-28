@@ -4,6 +4,7 @@ import { getArticles, deleteArticle } from "../../api";
 import "../../App.css";
 import PostArticle from "./PostArticle";
 import Loader from "../Loader";
+// import Sorting from "../Sorting";
 
 class ArticlesList extends Component {
   state = {
@@ -12,14 +13,6 @@ class ArticlesList extends Component {
     order_by: "desc",
     page: 1,
     isLoading: true
-  };
-
-  setSortBy = event => {
-    this.setState({ sort_by: event.currentTarget.value, isLoading: false });
-  };
-
-  setOrderBy = event => {
-    this.setState({ order_by: event.currentTarget.value, isLoading: false });
   };
 
   articleAdder = newArticle => {
@@ -41,12 +34,21 @@ class ArticlesList extends Component {
     });
   };
 
+  setSortBy = event => {
+    this.setState({ sort_by: event.currentTarget.value, isLoading: false });
+  };
+
+  setOrderBy = event => {
+    this.setState({ order_by: event.currentTarget.value, isLoading: false });
+  };
+
   render() {
     const { articles, isLoading } = this.state;
     const { loggedInUser } = this.props;
     if (isLoading) return <Loader />;
     return (
       <div>
+        {/* <Sorting /> */}
         <div className="sort">
           <h3>Sort By:</h3>
           <button
@@ -117,7 +119,7 @@ class ArticlesList extends Component {
                         this.handleDelete(article.article_id);
                       }}
                     >
-                      Delete
+                      Delete your article
                     </button>
                   )}
                 </div>
