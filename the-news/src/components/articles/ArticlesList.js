@@ -1,34 +1,50 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
-import { getArticles } from "../../api";
+import { getArticles, deleteArticle } from "../../api";
 import "../../App.css";
 import PostArticle from "./PostArticle";
+import Loader from "../Loader";
 
 class ArticlesList extends Component {
   state = {
     articles: [],
     sort_by: null,
     order_by: "desc",
-    page: 1
+    page: 1,
+    isLoading: true
   };
 
   setSortBy = event => {
-    this.setState({ sort_by: event.currentTarget.value });
+    this.setState({ sort_by: event.currentTarget.value, isLoading: false });
   };
 
   setOrderBy = event => {
-    this.setState({ order_by: event.currentTarget.value });
+    this.setState({ order_by: event.currentTarget.value, isLoading: false });
   };
 
   articleAdder = newArticle => {
     this.setState(prevState => {
-      return { articles: [newArticle, ...prevState.articles] };
+      return {
+        articles: [newArticle, ...prevState.articles],
+        isLoading: false
+      };
+    });
+  };
+
+  handleDelete = article_id => {
+    const { articles } = this.state;
+    deleteArticle(article_id).then(() => {
+      const filteredArticles = articles.filter(article => {
+        return article.article_id !== article_id;
+      });
+      this.setState({ articles: filteredArticles });
     });
   };
 
   render() {
-    const { articles } = this.state;
+    const { articles, isLoading } = this.state;
     const { loggedInUser } = this.props;
+    if (isLoading) return <Loader />;
     return (
       <div>
         <div className="sort">
@@ -93,6 +109,17 @@ class ArticlesList extends Component {
                   <h4>Topic: {article.topic}</h4>
                   <h5>Votes: {article.votes}</h5>
                   <h5>Comments: {article.comment_count}</h5>
+                  {loggedInUser === article.author && (
+                    <button
+                      id="article.article_id"
+                      className="deleteButton"
+                      onClick={() => {
+                        this.handleDelete(article.article_id);
+                      }}
+                    >
+                      Delete
+                    </button>
+                  )}
                 </div>
               );
             })}
@@ -105,7 +132,7 @@ class ArticlesList extends Component {
     const { topic } = this.props;
     const query = { topic };
     getArticles(query).then(articles => {
-      this.setState({ articles: articles });
+      this.setState({ articles: articles, isLoading: false });
     });
   }
 
@@ -119,7 +146,7 @@ class ArticlesList extends Component {
       order_by !== prevState.order_by ||
       page !== prevState.page) &&
       getArticles(query).then(articles => {
-        this.setState({ articles: articles });
+        this.setState({ articles: articles, isLoading: false });
       });
   }
 }

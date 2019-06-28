@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import { getCommentsByArticle, deleteComment } from "../../api";
 import Voting from "../Voting";
 import PostComment from "./PostComment";
+import Loader from "../Loader";
 
 class Comments extends Component {
   state = {
-    comments: []
+    comments: [],
+    isLoading: true
   };
 
   handleDelete = id => {
@@ -18,7 +20,9 @@ class Comments extends Component {
   };
 
   render() {
+    const { comments, isLoading } = this.state;
     const { loggedInUser, id } = this.props;
+    if (isLoading) return <Loader />;
     return (
       <div className="comments">
         <h2>Comments</h2>
@@ -32,7 +36,7 @@ class Comments extends Component {
           <h4>Please log in to join the discussion</h4>
         )}
         <ul className="commentsList" key="comments">
-          {this.state.comments.map(comment => {
+          {comments.map(comment => {
             return (
               <li className="commentCard" key={comment.comment_id}>
                 <h4 className="author">Comment By: {comment.author}</h4>
@@ -66,13 +70,15 @@ class Comments extends Component {
 
   componentDidMount() {
     getCommentsByArticle(this.props.id).then(comments => {
-      this.setState({ comments: comments });
+      this.setState({ comments: comments, isLoading: false });
     });
   }
 
   commentsAdder = newComment => {
     this.setState(prevState => {
-      return { comments: [newComment, ...prevState.comments] };
+      return {
+        comments: [newComment, ...prevState.comments]
+      };
     });
   };
 }

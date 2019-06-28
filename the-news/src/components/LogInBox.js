@@ -1,14 +1,17 @@
 import React, { Component } from "react";
 import { getUser } from "../api";
 import { navigate } from "@reach/router";
+import Loader from "./Loader";
 
 class LogInBox extends Component {
   state = {
-    usernameInput: ""
+    usernameInput: "",
+    isLoading: true
   };
 
   render() {
-    const { usernameInput } = this.state;
+    const { usernameInput, isLoading } = this.state;
+    if (isLoading) return <Loader />;
     return (
       <div>
         <div className="logInBox">
@@ -25,14 +28,16 @@ class LogInBox extends Component {
   }
 
   handleInput = event => {
-    this.setState({ usernameInput: event.target.value });
+    this.setState({ usernameInput: event.target.value, isLoading: false });
   };
 
   handleSubmit = event => {
+    const { usernameInput } = this.state;
+    const { logInUser } = this.props;
     event.preventDefault();
-    getUser(this.state.usernameInput)
+    getUser(usernameInput)
       .then(user => {
-        return this.props.logInUser(user.username);
+        return logInUser(user.username);
       })
       .catch(err =>
         navigate("/error", {

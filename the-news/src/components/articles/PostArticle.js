@@ -79,7 +79,6 @@ class PostArticle extends Component {
         });
         navigate(`/articles/${article.article_id}`);
       })
-      .catch(console.dir);
   };
 }
 

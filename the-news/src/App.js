@@ -13,26 +13,32 @@ import UsersList from "./components/users/UsersList";
 import NewUser from "./components/users/NewUser";
 import LogInBox from "./components/LogInBox";
 import Error from "./components/Error";
+import Loader from "./components/Loader";
 
 class App extends Component {
   state = {
-    loggedInUser: ""
+    loggedInUser: "",
+    isLoading: true
   };
 
   logInUser = username => {
-    this.setState({ loggedInUser: username }, () => {
+    const { loggedInUser } = this.state;
+    this.setState({ loggedInUser: username, isLoading: false }, () => {
       navigate("/home");
     });
-    localStorage.setItem("loggedInUser", this.state.loggedInUser);
+    localStorage.setItem("loggedInUser", loggedInUser);
   };
 
   logOutUser = () => {
-    this.setState({ loggedInUser: "" }, () => navigate("/home"));
+    this.setState({ loggedInUser: "", isLoading: false }, () =>
+      navigate("/home")
+    );
     localStorage.setItem("loggedInUser", "");
   };
 
   render() {
-    const { loggedInUser } = this.state;
+    const { loggedInUser, isLoading } = this.state;
+    if (isLoading) return <Loader />;
     return (
       <div className="App" key="App">
         <Header />
@@ -63,7 +69,8 @@ class App extends Component {
 
   componentDidMount() {
     const isLoggedIn = localStorage.getItem("loggedInUser");
-    if (isLoggedIn) this.setState({ loggedInUser: isLoggedIn });
+    if (isLoggedIn)
+      this.setState({ loggedInUser: isLoggedIn, isLoading: false });
   }
 }
 

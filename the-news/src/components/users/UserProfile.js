@@ -1,19 +1,23 @@
 import React, { Component } from "react";
 import { getUser } from "../../api";
+import Loader from "../Loader";
 
 class User extends Component {
   state = {
-    user: []
+    user: [],
+    isLoading: true
   };
 
   componentDidMount() {
-    getUser(this.props.loggedInUser).then(user => {
-      this.setState({ user: user });
+    const { loggedInUser } = this.props;
+    getUser(loggedInUser).then(user => {
+      this.setState({ user: user, isLoading: false });
     });
   }
 
   render() {
-    const { user } = this.state;
+    const { user, isLoading } = this.state;
+    if (isLoading) return <Loader />;
     return (
       <div className="userProfile">
         <h2>Welcome, {user.name}</h2>

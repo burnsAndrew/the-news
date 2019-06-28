@@ -1,24 +1,20 @@
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
-import { getSingleArticle, deleteArticle } from "../../api";
+import { getSingleArticle } from "../../api";
 import Comments from "../comments/Comments";
 import Voting from "../Voting";
+import Loader from "../Loader";
 
 class SingleArticle extends Component {
   state = {
-    article: []
-  };
-
-  handleDelete = id => {
-    deleteArticle(id).then(article => {
-      this.setState({ article: article });
-    });
-    navigate(`/articles`);
+    article: [],
+    isLoading: true
   };
 
   render() {
-    const { article } = this.state;
+    const { article, isLoading } = this.state;
     const { loggedInUser, article_id } = this.props;
+    if (isLoading) return <Loader />;
     return (
       <div>
         <div className="singleArticle">
@@ -33,17 +29,6 @@ class SingleArticle extends Component {
             loggedInUser={loggedInUser}
           />
           <h5>Number of comments: {article.comment_count}</h5>
-          {loggedInUser === article.author && (
-            <button
-              id="article.article_id"
-              className="deleteButton"
-              onClick={() => {
-                this.handleDelete(article.article_id);
-              }}
-            >
-              Delete
-            </button>
-          )}
         </div>
         <Comments
           path="/articles/:article_id"
@@ -55,9 +40,10 @@ class SingleArticle extends Component {
   }
 
   componentDidMount() {
-    getSingleArticle(this.props.article_id)
+    const { article_id } = this.props;
+    getSingleArticle(article_id)
       .then(article => {
-        this.setState({ article: article });
+        this.setState({ article: article, isLoading: false });
       })
       .catch(err =>
         navigate("/error", {

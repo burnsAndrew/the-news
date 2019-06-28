@@ -1,27 +1,32 @@
 import React, { Component } from "react";
 import { getAllUsers, deleteUser } from "../../api";
+import Loader from "../Loader";
 
 class UsersList extends Component {
   state = {
-    users: []
+    users: [],
+    isLoading: true
   };
 
   handleDelete = id => {
+    const { users } = this.state;
     deleteUser(id).then(() => {
-      const filteredUsers = this.state.users.filter(user => {
+      const filteredUsers = users.filter(user => {
         return user.username !== id;
       });
-      this.setState({ users: filteredUsers });
+      this.setState({ users: filteredUsers, isLoading: false });
     });
   };
 
   render() {
+    const { users, isLoading } = this.state;
     const { loggedInUser } = this.props;
+    if (isLoading) return <Loader />;
     return (
       <div className="users">
         <h2>The community</h2>
         <ul className="usersList" key="users">
-          {this.state.users.map(user => {
+          {users.map(user => {
             return (
               <li className="userCard" key={user.username}>
                 <h4>NAME: {user.name}</h4>
@@ -48,7 +53,7 @@ class UsersList extends Component {
 
   componentDidMount() {
     getAllUsers().then(users => {
-      this.setState({ users: users });
+      this.setState({ users: users, isLoading: false });
     });
   }
 }

@@ -11,21 +11,24 @@ class PostComment extends Component {
   };
 
   handleSubmit = event => {
+    const { commentsAdder, id, username } = this.props;
+    const { userInput } = this.state;
     event.preventDefault();
     this.setState({ userInput: "" });
 
     const post = {
-      username: this.props.username,
-      body: this.state.userInput
+      username: username,
+      body: userInput
     };
 
-    postNewComment(this.props.id, post).then(comment => {
-      this.props.commentsAdder(comment);
+    postNewComment(id, post).then(comment => {
+      commentsAdder(comment);
     });
   };
 
   render() {
     const { userInput } = this.state;
+
     return (
       <div className="postComment">
         <h3>What do you think?</h3>

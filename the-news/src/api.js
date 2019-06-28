@@ -92,8 +92,8 @@ export const postNewArticle = (username, title, body, topic) => {
 export const deleteArticle = article_id => {
   return axios
     .delete(`${baseUrl}articles/${article_id}`)
-    .then(({ data: { article } }) => {
-      return article;
+    .then(({ data: { articles } }) => {
+      return articles;
     });
 };
 

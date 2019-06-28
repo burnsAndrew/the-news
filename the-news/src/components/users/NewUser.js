@@ -1,17 +1,20 @@
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
 import { postNewUser } from "../../api";
+import Loader from "../Loader";
 
 class NewUser extends Component {
   state = {
     username: "",
     name: "",
-    avatar_url: ""
+    avatar_url: "",
+    isLoading: true
   };
 
   render() {
-    const { username, name, avatar_url } = this.state;
+    const { username, name, avatar_url, isLoading } = this.state;
     // const { loggedInUser } = this.props;
+    if (isLoading) return <Loader />;
     return (
       <form
         onSubmit={this.handleSubmit}
@@ -51,14 +54,19 @@ class NewUser extends Component {
 
   handleChange = event => {
     const { name, value } = event.target;
-    this.setState({ [name]: value });
+    this.setState({ [name]: value, isLoading: false });
   };
 
   handleSubmit = event => {
     event.eventDefault();
     const { username, name, avatar_url } = this.state;
     postNewUser(username, name, avatar_url).then(user => {
-      this.setState({ username: "", name: "", avatar_url: "" });
+      this.setState({
+        username: "",
+        name: "",
+        avatar_url: "",
+        isLoading: false
+      });
       navigate(`/users/${username}`);
     });
   };

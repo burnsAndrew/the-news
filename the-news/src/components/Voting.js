@@ -9,6 +9,7 @@ class Voting extends Component {
   render() {
     const { voteChange } = this.state;
     const { votes, loggedInUser, id } = this.props;
+
     return (
       <div className="voting">
         <h5>Votes: {voteChange + votes}</h5>
@@ -37,7 +38,9 @@ class Voting extends Component {
   handleVote = (id, directionOfVote) => {
     const { type } = this.props;
     const { voteChange } = this.state;
-    this.setState({ voteChange: voteChange + directionOfVote });
+    this.setState({
+      voteChange: voteChange + directionOfVote
+    });
     if (type === "article") {
       patchSingleArticle(id, { inc_votes: directionOfVote });
     } else if (type === "comment") {
