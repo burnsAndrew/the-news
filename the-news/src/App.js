@@ -13,32 +13,28 @@ import UsersList from "./components/users/UsersList";
 import NewUser from "./components/users/NewUser";
 import LogInBox from "./components/LogInBox";
 import Error from "./components/Error";
-import Loader from "./components/Loader";
 
 class App extends Component {
   state = {
-    loggedInUser: "",
-    isLoading: true
+    loggedInUser: ""
   };
 
   logInUser = username => {
     const { loggedInUser } = this.state;
-    this.setState({ loggedInUser: username, isLoading: false }, () => {
+    this.setState({ loggedInUser: username }, () => {
       navigate("/home");
     });
     localStorage.setItem("loggedInUser", loggedInUser);
   };
 
   logOutUser = () => {
-    this.setState({ loggedInUser: "", isLoading: false }, () =>
-      navigate("/home")
-    );
+    this.setState({ loggedInUser: "" }, () => navigate("/home"));
     localStorage.setItem("loggedInUser", "");
   };
 
   render() {
-    const { loggedInUser, isLoading } = this.state;
-    if (isLoading) return <Loader />;
+    const { loggedInUser } = this.state;
+
     return (
       <div className="App" key="App">
         <Header />
@@ -48,7 +44,7 @@ class App extends Component {
           <Home path="/" />
           <Topics path="/topics" loggedInUser={loggedInUser} />
           <LogInBox path="/login" logInUser={this.logInUser} />
-          <NewUser path="/createaccount" /*loggedInUser={loggedInUser}*/ />
+          <NewUser path="/createaccount" />
           <ArticlesList path="/articles/*" loggedInUser={loggedInUser} />
           <ArticlesList
             path="/articles/topic/:topic"
@@ -69,8 +65,7 @@ class App extends Component {
 
   componentDidMount() {
     const isLoggedIn = localStorage.getItem("loggedInUser");
-    if (isLoggedIn)
-      this.setState({ loggedInUser: isLoggedIn, isLoading: false });
+    if (isLoggedIn) this.setState({ loggedInUser: isLoggedIn });
   }
 }
 

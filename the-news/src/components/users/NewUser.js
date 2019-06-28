@@ -1,20 +1,16 @@
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
 import { postNewUser } from "../../api";
-import Loader from "../Loader";
 
 class NewUser extends Component {
   state = {
-    username: "",
-    name: "",
-    avatar_url: "",
-    isLoading: true
+    usernameInput: "",
+    nameInput: "",
+    avatar_urlInput: ""
   };
 
   render() {
-    const { username, name, avatar_url, isLoading } = this.state;
-    // const { loggedInUser } = this.props;
-    if (isLoading) return <Loader />;
+    const { usernameInput, nameInput, avatar_urlInput } = this.state;
     return (
       <form
         onSubmit={this.handleSubmit}
@@ -23,51 +19,57 @@ class NewUser extends Component {
       >
         <label>Username: </label>
         <input
-          onChange={this.handleChange}
+          onChange={this.handleInput}
           type="text"
           name="username"
-          value={username}
+          value={usernameInput}
           placeholder="Create a cool username..."
         />{" "}
         <label>Name: </label>
         <input
-          onChange={this.handleChange}
+          onChange={this.handleInput}
           type="text"
           name="name"
-          value={name}
+          value={nameInput}
           placeholder="Enter your name..."
         />{" "}
         <label>Avatar: </label>
         <input
-          onChange={this.handleChange}
+          onChange={this.handleInput}
           type="text"
           name="avatar_url"
-          value={avatar_url}
+          value={avatar_urlInput}
           placeholder="Your avatar details (optional)"
         />{" "}
-        <button className="submitButton" disabled={!username || !name}>
+        <button
+          className="submitButton"
+          disabled={!usernameInput || !nameInput}
+        >
           Submit
         </button>
       </form>
     );
   }
 
-  handleChange = event => {
+  handleInput = event => {
     const { name, value } = event.target;
-    this.setState({ [name]: value, isLoading: false });
+    this.setState({ [name]: value });
   };
 
   handleSubmit = event => {
-    event.eventDefault();
-    const { username, name, avatar_url } = this.state;
-    postNewUser(username, name, avatar_url).then(user => {
-      this.setState({
-        username: "",
-        name: "",
-        avatar_url: "",
-        isLoading: false
-      });
-      navigate(`/users/${username}`);
+    const { userAdder } = this.props;
+    const { usernameInput, nameInput, avatar_urlInput } = this.state;
+    event.preventDefault();
+
+    const post = {
+      username: usernameInput,
+      name: nameInput,
+      avatar_url: avatar_urlInput
+    };
+
+    postNewUser(post).then(user => {
+      userAdder(user);
+      navigate("/community");
     });
   };
 }

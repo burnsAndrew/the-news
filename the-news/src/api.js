@@ -84,8 +84,8 @@ export const postNewArticle = (username, title, body, topic) => {
       body,
       topic: topicName
     })
-    .then(({ data: { article } }) => {
-      return article;
+    .then(({ data: { articles } }) => {
+      return articles;
     });
 };
 
@@ -99,14 +99,13 @@ export const deleteArticle = article_id => {
 
 export const postNewUser = ({ username, name, avatar_url }) => {
   return axios
-    .post(`${baseUrl}users`, {
+    .post(`${baseUrl}users/`, {
       username,
       name,
       avatar_url
     })
-    .then(({ data: { user } }) => {
-      console.log(user);
-      return user;
+    .then(({ data: { users } }) => {
+      return users;
     });
 };
 
@@ -123,8 +122,8 @@ export const getAllUsers = query => {
 export const deleteUser = username => {
   return axios
     .delete(`${baseUrl}users/${username}`)
-    .then(({ data: { user } }) => {
-      return user;
+    .then(({ data: { users } }) => {
+      return users;
     });
 };
 

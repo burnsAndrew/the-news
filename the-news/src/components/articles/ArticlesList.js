@@ -152,12 +152,3 @@ class ArticlesList extends Component {
 }
 
 export default ArticlesList;
-
-//what i need to do later:
-// create buttons for pagination and a function:
-// <button onClick={() => {this.changePage(-1)}}></button>
-//   <button onClick={() => { this.changePage(1) }}></button>
-
-//   changePage = (direction) => {
-// this.setState((prevState) => ({page: prevState.page + direction}))
-//   }

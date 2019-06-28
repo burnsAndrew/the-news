@@ -20,7 +20,6 @@ class UsersList extends Component {
 
   render() {
     const { users, isLoading } = this.state;
-    const { loggedInUser } = this.props;
     if (isLoading) return <Loader />;
     return (
       <div className="users">
@@ -32,17 +31,6 @@ class UsersList extends Component {
                 <h4>NAME: {user.name}</h4>
                 <h4>USERNAME: {user.username}</h4>
                 <img src={user.avatar_url} alt="user's avatar" />
-                {loggedInUser === user.username && (
-                  <button
-                    id="user.username"
-                    className="deleteButton"
-                    onClick={() => {
-                      this.handleDelete(user.username);
-                    }}
-                  >
-                    Close Account
-                  </button>
-                )}
               </li>
             );
           })}
@@ -56,6 +44,14 @@ class UsersList extends Component {
       this.setState({ users: users, isLoading: false });
     });
   }
+
+  userAdder = newUser => {
+    this.setState(prevState => {
+      return {
+        users: [newUser, ...prevState.users]
+      };
+    });
+  };
 }
 
 export default UsersList;
