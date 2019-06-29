@@ -4,6 +4,8 @@ import { getArticles, deleteArticle } from "../../api";
 import "../../App.css";
 import PostArticle from "./PostArticle";
 import Loader from "../Loader";
+import { navigate } from "@reach/router/lib/history";
+import Button from "@material-ui/core/Button";
 // import Sorting from "../Sorting";
 
 class ArticlesList extends Component {
@@ -26,12 +28,20 @@ class ArticlesList extends Component {
 
   handleDelete = article_id => {
     const { articles } = this.state;
-    deleteArticle(article_id).then(() => {
-      const filteredArticles = articles.filter(article => {
-        return article.article_id !== article_id;
-      });
-      this.setState({ articles: filteredArticles });
-    });
+    deleteArticle(article_id)
+      .then(() => {
+        const filteredArticles = articles.filter(article => {
+          return article.article_id !== article_id;
+        });
+        this.setState({ articles: filteredArticles });
+      })
+      .catch(err =>
+        navigate("/error", {
+          state: {
+            displayerror: "That article doesn't exist"
+          }
+        })
+      );
   };
 
   setSortBy = event => {
@@ -51,48 +61,58 @@ class ArticlesList extends Component {
         {/* <Sorting /> */}
         <div className="sort">
           <h3>Sort By:</h3>
-          <button
+          <Button
+            variant="contained"
+            color="primary"
             className="sortbyDateButton"
             onClick={this.setSortBy}
             value={"created_at"}
           >
             Date
-          </button>
-          <button
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
             className="sortbyCommentCountButton"
             onClick={this.setSortBy}
             value={"comment_count"}
           >
             Number Of Comments
-          </button>
-          <button
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
             className="sortbyVoteCountButton"
             onClick={this.setSortBy}
             value={"votes"}
           >
             Votes
-          </button>
-          <button
+          </Button>
+          <Button
+            variant="contained"
+            color="primary"
             className="sortbyAuthorButton"
             onClick={this.setSortBy}
             value={"author"}
           >
             Author
-          </button>
-          <button
+          </Button>
+          <Button
+            variant="contained"
             className="orderbyAscendingButton"
             onClick={this.setOrderBy}
             value={"asc"}
           >
             Asc
-          </button>
-          <button
+          </Button>
+          <Button
+            variant="contained"
             className="orderbyDescendingButton"
             onClick={this.setOrderBy}
             value={"desc"}
           >
             Desc
-          </button>
+          </Button>
         </div>
         <div className="addArticleHeader">
           <PostArticle loggedInUser={loggedInUser} />
@@ -112,7 +132,8 @@ class ArticlesList extends Component {
                   <h5>Votes: {article.votes}</h5>
                   <h5>Comments: {article.comment_count}</h5>
                   {loggedInUser === article.author && (
-                    <button
+                    <Button
+                      variant="contained"
                       id="article.article_id"
                       className="deleteButton"
                       onClick={() => {
@@ -120,7 +141,7 @@ class ArticlesList extends Component {
                       }}
                     >
                       Delete your article
-                    </button>
+                    </Button>
                   )}
                 </div>
               );

@@ -16,7 +16,7 @@ import Error from "./components/Error";
 
 class App extends Component {
   state = {
-    loggedInUser: ""
+    loggedInUser: "jessjelly"
   };
 
   logInUser = username => {

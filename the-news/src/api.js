@@ -85,7 +85,6 @@ export const postNewArticle = (username, title, body, topic) => {
       topic: topicName
     })
     .then(({ data: { article } }) => {
-      console.log(article);
       return article;
     });
 };
@@ -105,8 +104,8 @@ export const postNewUser = ({ username, name, avatar_url }) => {
       name,
       avatar_url
     })
-    .then(({ data: { users } }) => {
-      return users;
+    .then(({ data: { user } }) => {
+      return user;
     });
 };
 
@@ -125,18 +124,5 @@ export const deleteUser = username => {
     .delete(`${baseUrl}users/${username}`)
     .then(({ data: { users } }) => {
       return users;
-    });
-};
-
-// not sure if I will need this one yet?  Here just in case
-
-export const postNewTopic = ({ slug, description }) => {
-  return axios
-    .post(`${baseUrl}topics`, {
-      slug,
-      description
-    })
-    .then(({ data: { topic } }) => {
-      return topic;
     });
 };

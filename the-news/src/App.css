@@ -4,7 +4,7 @@
   font-family: "Roboto Mono", monospace;
   font-family: "Roboto", sans-serif;
   background-color: #f8e1e1;
-  min-height: 100vh;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,9 +24,8 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-}
-
-li {
+  overflow: hidden;
+  background-color: white;
 }
 
 /* FONT SIZES */
@@ -61,24 +60,24 @@ h6 {
 
 /* COMPONENTS */
 .header {
+  border-color: grey;
+  border-style: solid;
+  width: 40em;
 }
 
 .appName {
   background-color: #bdc3c7;
 }
 
-.nav {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  display: inline-block;
-  color: blue;
-  text-align: center;
-  padding: 14px 16px;
-}
+/* .nav {
+  background-color: #bdc3c7;
+  width: 40em;
+} */
 
 .home {
+  background-color: #bdc3c7;
+  width: 40em;
+  height: 10em;
 }
 
 .logInBox {
@@ -120,6 +119,7 @@ h6 {
 }
 
 .newArticleForm {
+  display: inline;
 }
 
 .comments {
@@ -202,8 +202,9 @@ h6 {
 /* ANIMATION */
 
 .loader {
-  border: 16px solid #f3f3f3; /* Light grey */
-  border-top: 16px solid #3498db; /* Blue */
+  border: 16px solid black;
+  border-top: 16px solid #ffcc00;
+  border-bottom: 16px solid #ffcc00;
   border-radius: 50%;
   width: 120px;
   height: 120px;
