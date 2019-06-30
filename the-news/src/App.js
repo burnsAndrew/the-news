@@ -10,9 +10,9 @@ import PostArticle from "./components/articles/PostArticle";
 import SingleArticle from "./components/articles/SingleArticle";
 import User from "./components/users/UserProfile";
 import UsersList from "./components/users/UsersList";
-import NewUser from "./components/users/NewUser";
 import LogInBox from "./components/LogInBox";
 import Error from "./components/Error";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 class App extends Component {
   state = {
@@ -36,30 +36,32 @@ class App extends Component {
     const { loggedInUser } = this.state;
 
     return (
-      <div className="App" key="App">
-        <Header />
-        <Nav loggedInUser={loggedInUser} logOutUser={this.logOutUser} />
+      <React.Fragment>
+        <CssBaseline />
+        <div className="App" key="App">
+          <Header />
+          <Nav loggedInUser={loggedInUser} logOutUser={this.logOutUser} />
 
-        <Router>
-          <Home path="/" />
-          <Topics path="/topics" loggedInUser={loggedInUser} />
-          <LogInBox path="/login" logInUser={this.logInUser} />
-          <NewUser path="/createaccount" />
-          <ArticlesList path="/articles/*" loggedInUser={loggedInUser} />
-          <ArticlesList
-            path="/articles/topic/:topic"
-            loggedInUser={loggedInUser}
-          />
-          <PostArticle path="/postArticle" loggedInUser={loggedInUser} />
-          <SingleArticle
-            path="/articles/:article_id"
-            loggedInUser={loggedInUser}
-          />
-          <User path="/user" loggedInUser={loggedInUser} />
-          <UsersList path="/community" loggedInUser={loggedInUser} />
-          <Error path="/error" />
-        </Router>
-      </div>
+          <Router>
+            <Home path="/" />
+            <Topics path="/topics" loggedInUser={loggedInUser} />
+            <LogInBox path="/login" logInUser={this.logInUser} />
+            <ArticlesList path="/articles/*" loggedInUser={loggedInUser} />
+            <ArticlesList
+              path="/articles/topic/:topic"
+              loggedInUser={loggedInUser}
+            />
+            <PostArticle path="/postArticle" loggedInUser={loggedInUser} />
+            <SingleArticle
+              path="/articles/:article_id"
+              loggedInUser={loggedInUser}
+            />
+            <User path="/user" loggedInUser={loggedInUser} />
+            <UsersList path="/community" loggedInUser={loggedInUser} />
+            <Error path="/error" />
+          </Router>
+        </div>
+      </React.Fragment>
     );
   }
 

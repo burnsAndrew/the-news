@@ -16,7 +16,7 @@ class Topics extends Component {
     if (isLoading) return <Loader />;
     return (
       <div className="topics">
-        <h2>Click on a topic below:</h2>
+        <h3>Click on a topic:</h3>
         <ul>
           {topics &&
             topics.map(topic => {

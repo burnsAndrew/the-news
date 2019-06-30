@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { postNewComment } from "../../api.js";
+import TextField from "@material-ui/core/TextField";
 
 class PostComment extends Component {
   state = {
@@ -33,14 +34,20 @@ class PostComment extends Component {
       <div className="postComment">
         <h3>What do you think?</h3>
         <form action="" onSubmit={this.handleSubmit}>
-          <textarea
-            id="commentInput"
-            type="text"
+          <TextField
+            id="outlined-full-width"
+            label="Comment"
             value={userInput}
             onChange={this.handleInput}
-            className="newCommentBox"
+            style={{ margin: 8 }}
             placeholder="Share your thoughts here..."
-          />{" "}
+            fullWidth
+            margin="normal"
+            variant="outlined"
+            InputLabelProps={{
+              shrink: true
+            }}
+          />
           <button className="submitButton" disabled={!userInput}>
             Submit
           </button>

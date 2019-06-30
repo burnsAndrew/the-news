@@ -15,7 +15,8 @@ class Voting extends Component {
       <div className="voting">
         <h5>Votes: {voteChange + votes}</h5>
         <Button
-          variant="outlined"
+          variant="contained"
+          size="small"
           className="voteUpButton"
           disabled={voteChange === 1 || !loggedInUser}
           onClick={() => {
@@ -25,7 +26,8 @@ class Voting extends Component {
           Vote up
         </Button>
         <Button
-          variant="outlined"
+          variant="contained"
+          size="small"
           className="voteDownButton"
           disabled={voteChange === -1 || !loggedInUser}
           onClick={() => {

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { getUser } from "../api";
 import { navigate } from "@reach/router";
+import Button from "@material-ui/core/Button";
 
 class LogInBox extends Component {
   state = {
@@ -15,9 +16,14 @@ class LogInBox extends Component {
           <h2>Enter Your Username:</h2>
           <form onSubmit={this.handleSubmit}>
             <input onChange={this.handleInput} type="text" />
-            <button className="logInButton" disabled={!usernameInput}>
+            <Button
+              variant="outlined"
+              size="small"
+              className="logInButton"
+              disabled={!usernameInput}
+            >
               Log In
-            </button>
+            </Button>
           </form>
         </div>
       </div>
@@ -34,6 +40,7 @@ class LogInBox extends Component {
     event.preventDefault();
     getUser(usernameInput)
       .then(user => {
+        console.log(user);
         return logInUser(user.username);
       })
       .catch(err =>

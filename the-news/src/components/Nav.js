@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "@reach/router";
+import Button from "@material-ui/core/Button";
 
 const Nav = props => {
   const { loggedInUser, logOutUser } = props;
@@ -20,9 +21,9 @@ const Nav = props => {
             <Link to="/login">
               <li>Log in</li>
             </Link>
-            <Link to="/createaccount">
+            {/* <Link to="/createaccount">
               <li>Create account</li>
-            </Link>
+            </Link> */}
           </div>
         ) : (
           <div className="loggedIn">
@@ -31,9 +32,14 @@ const Nav = props => {
             </Link>
             <li>
               You're logged in as {loggedInUser}. Not you?{" "}
-              <button className="logoutButton" onClick={logOutUser}>
+              <Button
+                variant="outlined"
+                size="small"
+                className="logoutButton"
+                onClick={logOutUser}
+              >
                 Log out
-              </button>
+              </Button>
             </li>
           </div>
         )}

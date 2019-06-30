@@ -58,12 +58,15 @@ class ArticlesList extends Component {
     if (isLoading) return <Loader />;
     return (
       <div>
+        <div className="addArticleHeader">
+          <PostArticle loggedInUser={loggedInUser} />
+        </div>
         {/* <Sorting /> */}
         <div className="sort">
           <h3>Sort By:</h3>
           <Button
+            size="small"
             variant="contained"
-            color="primary"
             className="sortbyDateButton"
             onClick={this.setSortBy}
             value={"created_at"}
@@ -71,8 +74,8 @@ class ArticlesList extends Component {
             Date
           </Button>
           <Button
+            size="small"
             variant="contained"
-            color="primary"
             className="sortbyCommentCountButton"
             onClick={this.setSortBy}
             value={"comment_count"}
@@ -80,8 +83,8 @@ class ArticlesList extends Component {
             Number Of Comments
           </Button>
           <Button
+            size="small"
             variant="contained"
-            color="primary"
             className="sortbyVoteCountButton"
             onClick={this.setSortBy}
             value={"votes"}
@@ -89,8 +92,8 @@ class ArticlesList extends Component {
             Votes
           </Button>
           <Button
+            size="small"
             variant="contained"
-            color="primary"
             className="sortbyAuthorButton"
             onClick={this.setSortBy}
             value={"author"}
@@ -98,6 +101,7 @@ class ArticlesList extends Component {
             Author
           </Button>
           <Button
+            size="small"
             variant="contained"
             className="orderbyAscendingButton"
             onClick={this.setOrderBy}
@@ -106,6 +110,7 @@ class ArticlesList extends Component {
             Asc
           </Button>
           <Button
+            size="small"
             variant="contained"
             className="orderbyDescendingButton"
             onClick={this.setOrderBy}
@@ -114,9 +119,7 @@ class ArticlesList extends Component {
             Desc
           </Button>
         </div>
-        <div className="addArticleHeader">
-          <PostArticle loggedInUser={loggedInUser} />
-        </div>
+
         <ul className="articlesList" key="articles">
           {articles &&
             articles.map(article => {
@@ -133,6 +136,7 @@ class ArticlesList extends Component {
                   <h5>Comments: {article.comment_count}</h5>
                   {loggedInUser === article.author && (
                     <Button
+                      size="small"
                       variant="contained"
                       id="article.article_id"
                       className="deleteButton"

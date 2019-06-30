@@ -4,6 +4,7 @@ import { navigate } from "@reach/router";
 import Voting from "../Voting";
 import PostComment from "./PostComment";
 import Loader from "../Loader";
+import Button from "@material-ui/core/Button";
 
 class Comments extends Component {
   state = {
@@ -58,7 +59,9 @@ class Comments extends Component {
                     type={"comment"}
                   />
                   {loggedInUser === comment.author && (
-                    <button
+                    <Button
+                      size="small"
+                      variant="contained"
                       id="comment.comment_id"
                       className="deleteButton"
                       onClick={() => {
@@ -66,7 +69,7 @@ class Comments extends Component {
                       }}
                     >
                       Delete
-                    </button>
+                    </Button>
                   )}
                 </div>
               </li>

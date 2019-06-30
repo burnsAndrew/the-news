@@ -18,7 +18,7 @@ class SingleArticle extends Component {
     return (
       <div>
         <div className="singleArticle">
-          <h2>{article.title}</h2>
+          <h2 className="singleArticleTitle">{article.title}</h2>
           <h3 className="author">Written by: {article.author}</h3>
           <h4>Topic: {article.topic}</h4>
           <h5>{article.body}</h5>
