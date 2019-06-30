@@ -40,6 +40,7 @@ class App extends Component {
         <CssBaseline />
         <div className="App" key="App">
           <Header />
+
           <Nav loggedInUser={loggedInUser} logOutUser={this.logOutUser} />
 
           <Router>

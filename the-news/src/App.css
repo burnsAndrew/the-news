@@ -81,18 +81,19 @@ h6 {
 }
 
 .sort {
-  padding-bottom: 1em;
+  padding-bottom: 0.5em;
+  border-top-style: solid;
 }
 
 .articlesList {
-  margin: 10px;
+  margin: 5px;
   padding: 1em;
   background-color: rgb(240, 240, 240);
 }
 
 .articleCard {
   background-color: white;
-  margin: 20px;
+  margin: 10px;
   border-radius: 0.5em;
   padding: 1em;
   border-style: solid;
@@ -131,7 +132,7 @@ h6 {
 }
 
 .newArticle {
-  border-style: dashed;
+  padding-bottom: 2em;
 }
 
 .singleArticle {
@@ -150,7 +151,7 @@ h6 {
 }
 
 .newArticleForm {
-  display: inline;
+  display: inline-block;
 }
 
 .comments {
@@ -209,45 +210,12 @@ h6 {
 }
 
 .users {
-  border-style: groove;
 }
 
 .newUserForm {
 }
 
 .userProfile {
-}
-
-/* BUTTONS */
-
-.sortbyDateButton {
-}
-
-.sortbyCommentCountButton {
-}
-
-.sortbyVoteCountButton {
-}
-
-.sortbyAuthorButton {
-}
-
-.deleteButton {
-}
-
-.submitButton {
-}
-
-.logInButton {
-}
-
-.logoutButton {
-}
-
-.voteUpButton {
-}
-
-.voteDownButton {
 }
 
 /* ANIMATION */

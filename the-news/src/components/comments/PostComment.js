@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { postNewComment } from "../../api.js";
 import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 class PostComment extends Component {
   state = {
@@ -33,7 +34,7 @@ class PostComment extends Component {
     return (
       <div className="postComment">
         <h3>What do you think?</h3>
-        <form action="" onSubmit={this.handleSubmit}>
+        <form action="">
           <TextField
             id="outlined-full-width"
             label="Comment"
@@ -48,9 +49,15 @@ class PostComment extends Component {
               shrink: true
             }}
           />
-          <button className="submitButton" disabled={!userInput}>
+          <Button
+            variant="contained"
+            size="small"
+            className="submitButton"
+            disabled={!userInput}
+            onClick={this.handleSubmit}
+          >
             Submit
-          </button>
+          </Button>
         </form>
       </div>
     );

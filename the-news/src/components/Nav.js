@@ -16,14 +16,14 @@ const Nav = props => {
         <Link to="/articles">
           <li>Articles</li>
         </Link>
+        <Link to="/community">
+          <li>Community</li>
+        </Link>
         {!loggedInUser ? (
           <div>
             <Link to="/login">
               <li>Log in</li>
             </Link>
-            {/* <Link to="/createaccount">
-              <li>Create account</li>
-            </Link> */}
           </div>
         ) : (
           <div className="loggedIn">
@@ -40,12 +40,12 @@ const Nav = props => {
               >
                 Log out
               </Button>
+              {/* <Link to="/createaccount">
+              <li>Create account</li>
+            </Link> */}
             </li>
           </div>
         )}
-        <Link to="/community">
-          <li>Community</li>
-        </Link>
       </ul>
     </nav>
   );
