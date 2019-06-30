@@ -30,7 +30,11 @@ class UsersList extends Component {
               <li className="userCard" key={user.username}>
                 <h4>NAME: {user.name}</h4>
                 <h4>USERNAME: {user.username}</h4>
-                <img src={user.avatar_url} alt="user's avatar" />
+                <img
+                  className="avatarImage"
+                  src={user.avatar_url}
+                  alt="user's avatar"
+                />
               </li>
             );
           })}

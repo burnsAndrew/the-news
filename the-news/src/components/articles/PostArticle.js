@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { navigate } from "@reach/router";
 import { postNewArticle } from "../../api";
 import TextField from "@material-ui/core/TextField";
-import MenuItem from "@material-ui/core/MenuItem";
-
 import Button from "@material-ui/core/Button";
 
 class PostArticle extends Component {
@@ -21,13 +19,7 @@ class PostArticle extends Component {
         {loggedInUser ? (
           <form className="newArticleForm">
             <h3>Write an article</h3>
-            {/* <label>Topic: </label>
-            <select onChange={this.handleChange} name="topic" id="topicSelect">
-              <option value="" />
-              <option value="Coding">Coding</option>
-              <option value="Cooking">Cooking</option>
-              <option value="Football">Football</option>
-            </select>{" "} */}
+
             <TextField
               id="standard-name"
               label="Topic"

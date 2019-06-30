@@ -5,8 +5,7 @@ const Header = props => {
     <header>
       <div className="header">
         <h1 className="appName">THE news.</h1>
-        {/*I am going to add a logo here, as well as an image (possibly animated?)
-        This will replace the h1 above */}
+        {/* going to add the logo here */}
       </div>
     </header>
   );

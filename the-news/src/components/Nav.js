@@ -8,16 +8,16 @@ const Nav = props => {
     <nav>
       <ul className="nav">
         <Link to="/">
-          <li>Home</li>
+          <li className="navHome">Home</li>
         </Link>
         <Link to="/topics">
-          <li>Topics</li>
+          <li className="navTopics">Topics</li>
         </Link>
         <Link to="/articles">
-          <li>Articles</li>
+          <li className="navArticles">Articles</li>
         </Link>
         <Link to="/community">
-          <li>Community</li>
+          <li className="navCommunity">Community</li>
         </Link>
         {!loggedInUser ? (
           <div>

@@ -63,7 +63,7 @@ class ArticlesList extends Component {
         </div>
         {/* <Sorting /> */}
         <div className="sort">
-          <h3>Sort By:</h3>
+          <h3>Sort articles:</h3>
           <Button
             size="small"
             variant="contained"

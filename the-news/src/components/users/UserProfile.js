@@ -20,9 +20,13 @@ class User extends Component {
     if (isLoading) return <Loader />;
     return (
       <div className="userProfile">
-        <h2>Welcome, {user.name}</h2>
-        <h3>Username: {user.username}</h3>
-        <img src={user.avatar_url} alt="user's avatar" />
+        <h2 className="userUser">Welcome, {user.name}</h2>
+        <h3 className="userUsername">Username: {user.username}</h3>
+        <img
+          className="avatarImage"
+          src={user.avatar_url}
+          alt="user's avatar"
+        />
       </div>
     );
   }
