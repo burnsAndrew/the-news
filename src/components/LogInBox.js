@@ -14,13 +14,14 @@ class LogInBox extends Component {
       <div>
         <div className="logInBox">
           <h2>Enter Your Username:</h2>
-          <form onSubmit={this.handleSubmit}>
+          <form>
             <input onChange={this.handleInput} type="text" />
             <Button
               variant="outlined"
               size="small"
               className="logInButton"
               disabled={!usernameInput}
+              onSubmit={this.handleSubmit}
             >
               Log In
             </Button>
@@ -40,7 +41,6 @@ class LogInBox extends Component {
     event.preventDefault();
     getUser(usernameInput)
       .then(user => {
-        console.log(user);
         return logInUser(user.username);
       })
       .catch(err =>
