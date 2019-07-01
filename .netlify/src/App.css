@@ -76,6 +76,13 @@ h6 {
   color: #ffcc00;
 }
 
+.nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
 .sort {
   padding-bottom: 0.5em;
   border-top-style: solid;
