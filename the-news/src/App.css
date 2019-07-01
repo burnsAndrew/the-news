@@ -12,10 +12,6 @@
   border-width: 5px;
 }
 
-.frontImage {
-  width: 25%;
-}
-
 ul {
   list-style-type: none;
   margin: 0;
@@ -61,10 +57,23 @@ h6 {
 
 .appName {
   text-align: center;
+  text-shadow: rgb(32, 32, 32);
   background-color: rgb(32, 32, 32);
   color: #ffcc00;
   width: 100%;
-  border-radius: 2em;
+  border-radius: 0.5em;
+}
+
+#backgroundImage {
+  background-image: url("https://images.unsplash.com/photo-1446776899648-aa78eefe8ed0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=752&q=80");
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 1em;
+  z-index: -1;
+}
+
+.home {
+  color: #ffcc00;
 }
 
 .sort {
