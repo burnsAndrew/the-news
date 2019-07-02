@@ -1,21 +1,11 @@
 import React, { Component } from "react";
-import { getAllUsers, deleteUser } from "../../api";
+import { getAllUsers } from "../../api";
 import Loader from "../Loader";
 
 class UsersList extends Component {
   state = {
     users: [],
     isLoading: true
-  };
-
-  handleDelete = id => {
-    const { users } = this.state;
-    deleteUser(id).then(() => {
-      const filteredUsers = users.filter(user => {
-        return user.username !== id;
-      });
-      this.setState({ users: filteredUsers, isLoading: false });
-    });
   };
 
   render() {
@@ -48,14 +38,6 @@ class UsersList extends Component {
       this.setState({ users: users, isLoading: false });
     });
   }
-
-  userAdder = newUser => {
-    this.setState(prevState => {
-      return {
-        users: [newUser, ...prevState.users]
-      };
-    });
-  };
 }
 
 export default UsersList;

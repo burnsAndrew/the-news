@@ -6,7 +6,6 @@ import PostArticle from "./PostArticle";
 import Loader from "../Loader";
 import { navigate } from "@reach/router/lib/history";
 import Button from "@material-ui/core/Button";
-// import Sorting from "../Sorting";
 
 class ArticlesList extends Component {
   state = {
@@ -15,15 +14,6 @@ class ArticlesList extends Component {
     order_by: "desc",
     page: 1,
     isLoading: true
-  };
-
-  articleAdder = newArticle => {
-    this.setState(prevState => {
-      return {
-        articles: [newArticle, ...prevState.articles],
-        isLoading: false
-      };
-    });
   };
 
   handleDelete = article_id => {
@@ -61,7 +51,6 @@ class ArticlesList extends Component {
         <div className="addArticleHeader">
           <PostArticle loggedInUser={loggedInUser} />
         </div>
-        {/* <Sorting /> */}
         <div className="sort">
           <h3>Sort articles:</h3>
           <Button

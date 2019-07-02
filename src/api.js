@@ -97,31 +97,11 @@ export const deleteArticle = article_id => {
     });
 };
 
-export const postNewUser = ({ username, name, avatar_url }) => {
-  return axios
-    .post(`${baseUrl}users/`, {
-      username,
-      name,
-      avatar_url
-    })
-    .then(({ data: { user } }) => {
-      return user;
-    });
-};
-
 export const getAllUsers = query => {
   return axios
     .get(`${baseUrl}users`, {
       params: query
     })
-    .then(({ data: { users } }) => {
-      return users;
-    });
-};
-
-export const deleteUser = username => {
-  return axios
-    .delete(`${baseUrl}users/${username}`)
     .then(({ data: { users } }) => {
       return users;
     });
