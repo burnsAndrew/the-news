@@ -35,7 +35,7 @@ class Comments extends Component {
     if (isLoading) return <Loader />;
     return (
       <div className="comments">
-        <h2>Comments</h2>
+        <h2 id="subHeader">Comments</h2>
         {loggedInUser ? (
           <PostComment
             username={loggedInUser}

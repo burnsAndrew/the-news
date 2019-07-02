@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { getUser } from "../api";
 import { navigate } from "@reach/router";
+import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
 class LogInBox extends Component {
@@ -14,14 +15,19 @@ class LogInBox extends Component {
       <div>
         <div className="logInBox">
           <h2>Enter Your Username:</h2>
-          <form>
-            <input onChange={this.handleInput} type="text" />
+          <form onChange={this.handleInput}>
+            <TextField
+              id="standard-helperText"
+              label="Enter your username"
+              helperText="EG: tickle122"
+              margin="normal"
+            />
             <Button
               variant="outlined"
               size="small"
               className="logInButton"
               disabled={!usernameInput}
-              onSubmit={this.handleSubmit}
+              onClick={this.handleSubmit}
             >
               Log In
             </Button>
@@ -46,8 +52,7 @@ class LogInBox extends Component {
       .catch(err =>
         navigate("/error", {
           state: {
-            displayerror:
-              "That User Does Not Exist. Click above to create an account"
+            displayerror: "That User Does Not Exist."
           }
         })
       );

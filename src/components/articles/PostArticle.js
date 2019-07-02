@@ -45,7 +45,7 @@ class PostArticle extends Component {
               name="body"
               value={body}
               onChange={this.handleChange}
-              style={{ margin: 8 }}
+              style={{ margin: 6 }}
               placeholder="Share your story here..."
               fullWidth
               margin="normal"
@@ -54,6 +54,7 @@ class PostArticle extends Component {
                 shrink: true
               }}
             />
+
             <Button
               size="small"
               variant="contained"

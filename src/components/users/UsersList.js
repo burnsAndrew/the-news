@@ -23,7 +23,7 @@ class UsersList extends Component {
     if (isLoading) return <Loader />;
     return (
       <div className="users">
-        <h2>The community</h2>
+        <h2 id="subHeader">The community</h2>
         <ul className="usersList" key="users">
           {users.map(user => {
             return (

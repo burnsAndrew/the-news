@@ -16,7 +16,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 
 class App extends Component {
   state = {
-    loggedInUser: "jessjelly"
+    loggedInUser: ""
   };
 
   logInUser = username => {
@@ -40,9 +40,7 @@ class App extends Component {
         <CssBaseline />
         <div className="App" key="App">
           <Header />
-
           <Nav loggedInUser={loggedInUser} logOutUser={this.logOutUser} />
-
           <Router>
             <Home path="/" />
             <Topics path="/topics" loggedInUser={loggedInUser} />
