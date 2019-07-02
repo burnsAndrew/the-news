@@ -34,7 +34,7 @@ class PostComment extends Component {
     return (
       <div className="postComment">
         <h3>What do you think?</h3>
-        <form action="">
+        <form action="" onSubmit={this.handleSubmit}>
           <TextField
             id="outlined-full-width"
             label="Comment"

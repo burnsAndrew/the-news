@@ -17,7 +17,7 @@ class PostArticle extends Component {
     return (
       <div className="newArticle">
         {loggedInUser ? (
-          <form className="newArticleForm">
+          <form className="newArticleForm" onSubmit={this.handleSubmit}>
             <h3>Write an article</h3>
 
             <TextField
