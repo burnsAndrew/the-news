@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { getAllUsers } from "../../api";
 import Loader from "../Loader";
+import { navigate } from "@reach/router";
 
 class UsersList extends Component {
   state = {
@@ -34,9 +35,17 @@ class UsersList extends Component {
   }
 
   componentDidMount() {
-    getAllUsers().then(users => {
-      this.setState({ users: users, isLoading: false });
-    });
+    getAllUsers()
+      .then(users => {
+        this.setState({ users: users, isLoading: false });
+      })
+      .catch(err =>
+        navigate("/error", {
+          state: {
+            displayerror: "That article doesn't exist"
+          }
+        })
+      );
   }
 }
 

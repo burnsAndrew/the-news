@@ -147,9 +147,17 @@ class ArticlesList extends Component {
   componentDidMount() {
     const { topic } = this.props;
     const query = { topic };
-    getArticles(query).then(articles => {
-      this.setState({ articles: articles, isLoading: false });
-    });
+    getArticles(query)
+      .then(articles => {
+        this.setState({ articles: articles, isLoading: false });
+      })
+      .catch(err =>
+        navigate("/error", {
+          state: {
+            displayerror: "That article doesn't exist"
+          }
+        })
+      );
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -161,9 +169,17 @@ class ArticlesList extends Component {
       topic !== prevProps.topic ||
       order_by !== prevState.order_by ||
       page !== prevState.page) &&
-      getArticles(query).then(articles => {
-        this.setState({ articles: articles, isLoading: false });
-      });
+      getArticles(query)
+        .then(articles => {
+          this.setState({ articles: articles, isLoading: false });
+        })
+        .catch(err =>
+          navigate("/error", {
+            state: {
+              displayerror: "That article doesn't exist"
+            }
+          })
+        );
   }
 }
 

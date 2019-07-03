@@ -13,7 +13,6 @@ class LogInBox extends Component {
     const { usernameInput } = this.state;
     return (
       <div>
-        {/* <h2>Enter Your Username:</h2> */}
         <form className="logInBox" onSubmit={this.handleSubmit}>
           <TextField
             id="standard-helperText"

@@ -81,9 +81,17 @@ class Comments extends Component {
   }
 
   componentDidMount() {
-    getCommentsByArticle(this.props.id).then(comments => {
-      this.setState({ comments: comments, isLoading: false });
-    });
+    getCommentsByArticle(this.props.id)
+      .then(comments => {
+        this.setState({ comments: comments, isLoading: false });
+      })
+      .catch(err =>
+        navigate("/error", {
+          state: {
+            displayerror: "That article doesn't exist"
+          }
+        })
+      );
   }
 
   commentsAdder = newComment => {
