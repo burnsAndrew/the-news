@@ -68,6 +68,10 @@ h6 {
   color: #ffcc00;
 }
 
+.logInBox {
+  background-color: rgb(255, 255, 255);
+}
+
 .nav {
   list-style-type: none;
   text-decoration: none;

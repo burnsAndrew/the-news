@@ -13,26 +13,25 @@ class LogInBox extends Component {
     const { usernameInput } = this.state;
     return (
       <div>
-        <div className="logInBox">
-          <h2>Enter Your Username:</h2>
-          <form onChange={this.handleInput}>
-            <TextField
-              id="standard-helperText"
-              label="Enter your username"
-              helperText="EG: tickle122"
-              margin="normal"
-            />
-            <Button
-              variant="outlined"
-              size="small"
-              className="logInButton"
-              disabled={!usernameInput}
-              onClick={this.handleSubmit}
-            >
-              Log In
-            </Button>
-          </form>
-        </div>
+        {/* <h2>Enter Your Username:</h2> */}
+        <form className="logInBox" onSubmit={this.handleSubmit}>
+          <TextField
+            id="standard-helperText"
+            label="Enter your username"
+            helperText="EG: tickle122"
+            margin="normal"
+            onChange={this.handleInput}
+          />
+          <Button
+            variant="outlined"
+            size="small"
+            className="logInButton"
+            disabled={!usernameInput}
+            onClick={this.handleSubmit}
+          >
+            Log In
+          </Button>
+        </form>
       </div>
     );
   }
