@@ -42,7 +42,7 @@ class UsersList extends Component {
       .catch(err =>
         navigate("/error", {
           state: {
-            displayerror: "That article doesn't exist"
+            displayerror: "That person doesn't exist"
           }
         })
       );

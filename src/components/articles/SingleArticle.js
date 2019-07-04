@@ -7,7 +7,7 @@ import Loader from "../Loader";
 
 class SingleArticle extends Component {
   state = {
-    article: [],
+    article: {},
     isLoading: true
   };
 

@@ -42,7 +42,7 @@ class Topics extends Component {
       .catch(err =>
         navigate("/error", {
           state: {
-            displayerror: "That article doesn't exist"
+            displayerror: "That topic doesn't exist"
           }
         })
       );

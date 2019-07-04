@@ -5,7 +5,7 @@ import { navigate } from "@reach/router";
 
 class User extends Component {
   state = {
-    user: [],
+    user: {},
     isLoading: true
   };
 
@@ -18,7 +18,7 @@ class User extends Component {
       .catch(err =>
         navigate("/error", {
           state: {
-            displayerror: "That article doesn't exist"
+            displayerror: "That person doesn't exist"
           }
         })
       );

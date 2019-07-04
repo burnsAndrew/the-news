@@ -50,7 +50,7 @@ class LogInBox extends Component {
       .catch(err =>
         navigate("/error", {
           state: {
-            displayerror: "That User Does Not Exist."
+            displayerror: "That person Does Not Exist."
           }
         })
       );

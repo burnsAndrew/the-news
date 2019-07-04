@@ -88,7 +88,7 @@ class Comments extends Component {
       .catch(err =>
         navigate("/error", {
           state: {
-            displayerror: "That article doesn't exist"
+            displayerror: "That does not exist"
           }
         })
       );

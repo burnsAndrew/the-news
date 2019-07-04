@@ -28,7 +28,7 @@ class PostComment extends Component {
       commentsAdder(comment).catch(err =>
         navigate("/error", {
           state: {
-            displayerror: "That article doesn't exist"
+            displayerror: "That comment doesn't exist"
           }
         })
       );
