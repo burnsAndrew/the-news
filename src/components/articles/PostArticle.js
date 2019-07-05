@@ -86,21 +86,22 @@ class PostArticle extends Component {
     event.preventDefault();
     const { title, body, topic } = this.state;
     const { loggedInUser } = this.props;
-    postNewArticle(loggedInUser, title, body, topic).then(article => {
-      this.setState({
-        title: "",
-        body: "",
-        topic: ""
-      });
-      navigate(`/articles/${article.article_id}`);
-    });
-    // .catch(err =>
-    //   navigate("/error", {
-    //     state: {
-    //       displayerror: "That article doesn't exist"
-    //     }
-    //   })
-    // );
+    postNewArticle(loggedInUser, title, body, topic)
+      .then(article => {
+        this.setState({
+          title: "",
+          body: "",
+          topic: ""
+        });
+        navigate(`/articles/${article.article_id}`);
+      })
+      .catch(err =>
+        navigate("/error", {
+          state: {
+            displayerror: "That article doesn't exist"
+          }
+        })
+      );
   };
 }
 

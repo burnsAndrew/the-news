@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { getCommentsByArticle, deleteComment } from "../../api";
-// import { navigate } from "@reach/router";
+import { navigate } from "@reach/router";
 import Voting from "../Voting";
 import PostComment from "./PostComment";
 import Loader from "../Loader";
@@ -13,19 +13,20 @@ class Comments extends Component {
   };
 
   handleDelete = id => {
-    deleteComment(id).then(() => {
-      const filteredComments = this.state.comments.filter(comment => {
-        return comment.comment_id !== id;
-      });
-      this.setState({ comments: filteredComments });
-    });
-    // .catch(err =>
-    //   navigate("/error", {
-    //     state: {
-    //       displayerror: "That comment doesn't exist"
-    //     }
-    //   })
-    // );
+    deleteComment(id)
+      .then(() => {
+        const filteredComments = this.state.comments.filter(comment => {
+          return comment.comment_id !== id;
+        });
+        this.setState({ comments: filteredComments });
+      })
+      .catch(err =>
+        navigate("/error", {
+          state: {
+            displayerror: "That comment doesn't exist"
+          }
+        })
+      );
   };
 
   render() {
@@ -80,16 +81,17 @@ class Comments extends Component {
   }
 
   componentDidMount() {
-    getCommentsByArticle(this.props.id).then(comments => {
-      this.setState({ comments: comments, isLoading: false });
-    });
-    // .catch(err =>
-    //   navigate("/error", {
-    //     state: {
-    //       displayerror: "That does not exist"
-    //     }
-    //   })
-    // );
+    getCommentsByArticle(this.props.id)
+      .then(comments => {
+        this.setState({ comments: comments, isLoading: false });
+      })
+      .catch(err =>
+        navigate("/error", {
+          state: {
+            displayerror: "That does not exist"
+          }
+        })
+      );
   }
 
   commentsAdder = newComment => {

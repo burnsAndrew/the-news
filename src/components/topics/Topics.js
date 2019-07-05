@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { getTopics } from "../../api.js";
-import { Link /*navigate*/ } from "@reach/router";
+import { Link, navigate } from "@reach/router";
 import ArticlesList from "../articles/ArticlesList";
 import Loader from "../Loader";
 
@@ -35,16 +35,17 @@ class Topics extends Component {
   }
 
   componentDidMount() {
-    getTopics().then(topics => {
-      this.setState({ topics: topics, isLoading: false });
-    });
-    // .catch(err =>
-    //   navigate("/error", {
-    //     state: {
-    //       displayerror: "That topic doesn't exist"
-    //     }
-    //   })
-    // );
+    getTopics()
+      .then(topics => {
+        this.setState({ topics: topics, isLoading: false });
+      })
+      .catch(err =>
+        navigate("/error", {
+          state: {
+            displayerror: "That topic doesn't exist"
+          }
+        })
+      );
   }
 }
 

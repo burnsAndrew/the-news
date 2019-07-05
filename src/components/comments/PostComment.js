@@ -26,13 +26,6 @@ class PostComment extends Component {
 
     postNewComment(id, post).then(comment => {
       commentsAdder(comment);
-      // .catch(err =>
-      //   navigate("/error", {
-      //     state: {
-      //       displayerror: "That comment doesn't exist"
-      //     }
-      //   })
-      // );
     });
   };
 

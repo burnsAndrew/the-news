@@ -4,7 +4,7 @@ import { getArticles, deleteArticle } from "../../api";
 import "../../App.css";
 import PostArticle from "./PostArticle";
 import Loader from "../Loader";
-// import { navigate } from "@reach/router/lib/history";
+import { navigate } from "@reach/router/lib/history";
 import Button from "@material-ui/core/Button";
 
 class ArticlesList extends Component {
@@ -18,19 +18,20 @@ class ArticlesList extends Component {
 
   handleDelete = article_id => {
     const { articles } = this.state;
-    deleteArticle(article_id).then(() => {
-      const filteredArticles = articles.filter(article => {
-        return article.article_id !== article_id;
-      });
-      this.setState({ articles: filteredArticles });
-    });
-    // .catch(err =>
-    //   navigate("/error", {
-    //     state: {
-    //       displayerror: "That article doesn't exist"
-    //     }
-    //   })
-    // );
+    deleteArticle(article_id)
+      .then(() => {
+        const filteredArticles = articles.filter(article => {
+          return article.article_id !== article_id;
+        });
+        this.setState({ articles: filteredArticles });
+      })
+      .catch(err =>
+        navigate("/error", {
+          state: {
+            displayerror: "That article doesn't exist"
+          }
+        })
+      );
   };
 
   setSortBy = event => {
@@ -146,16 +147,17 @@ class ArticlesList extends Component {
   componentDidMount() {
     const { topic } = this.props;
     const query = { topic };
-    getArticles(query).then(articles => {
-      this.setState({ articles: articles, isLoading: false });
-    });
-    // .catch(err =>
-    //   navigate("/error", {
-    //     state: {
-    //       displayerror: "That article doesn't exist"
-    //     }
-    //   })
-    // );
+    getArticles(query)
+      .then(articles => {
+        this.setState({ articles: articles, isLoading: false });
+      })
+      .catch(err =>
+        navigate("/error", {
+          state: {
+            displayerror: "That article doesn't exist"
+          }
+        })
+      );
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -167,16 +169,17 @@ class ArticlesList extends Component {
       topic !== prevProps.topic ||
       order_by !== prevState.order_by ||
       page !== prevState.page) &&
-      getArticles(query).then(articles => {
-        this.setState({ articles: articles, isLoading: false });
-      });
-    // .catch(err =>
-    //   navigate("/error", {
-    //     state: {
-    //       displayerror: "That article doesn't exist"
-    //     }
-    //   })
-    // );
+      getArticles(query)
+        .then(articles => {
+          this.setState({ articles: articles, isLoading: false });
+        })
+        .catch(err =>
+          navigate("/error", {
+            state: {
+              displayerror: "That article doesn't exist"
+            }
+          })
+        );
   }
 }
 
