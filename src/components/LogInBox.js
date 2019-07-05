@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { getUser } from "../api";
-import { navigate } from "@reach/router";
+// import { navigate } from "@reach/router";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 
@@ -43,17 +43,16 @@ class LogInBox extends Component {
     const { usernameInput } = this.state;
     const { logInUser } = this.props;
     event.preventDefault();
-    getUser(usernameInput)
-      .then(user => {
-        return logInUser(user.username);
-      })
-      .catch(err =>
-        navigate("/error", {
-          state: {
-            displayerror: "That person Does Not Exist."
-          }
-        })
-      );
+    getUser(usernameInput).then(user => {
+      return logInUser(user.username);
+    });
+    // .catch(err =>
+    //   navigate("/error", {
+    //     state: {
+    //       displayerror: "That person Does Not Exist."
+    //     }
+    //   })
+    // );
   };
 }
 

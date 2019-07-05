@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { postNewComment } from "../../api.js";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import { navigate } from "@reach/router";
+// import { navigate } from "@reach/router";
 
 class PostComment extends Component {
   state = {
@@ -25,13 +25,14 @@ class PostComment extends Component {
     };
 
     postNewComment(id, post).then(comment => {
-      commentsAdder(comment).catch(err =>
-        navigate("/error", {
-          state: {
-            displayerror: "That comment doesn't exist"
-          }
-        })
-      );
+      commentsAdder(comment);
+      // .catch(err =>
+      //   navigate("/error", {
+      //     state: {
+      //       displayerror: "That comment doesn't exist"
+      //     }
+      //   })
+      // );
     });
   };
 

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { getAllUsers } from "../../api";
 import Loader from "../Loader";
-import { navigate } from "@reach/router";
+// import { navigate } from "@reach/router";
 
 class UsersList extends Component {
   state = {
@@ -35,17 +35,16 @@ class UsersList extends Component {
   }
 
   componentDidMount() {
-    getAllUsers()
-      .then(users => {
-        this.setState({ users: users, isLoading: false });
-      })
-      .catch(err =>
-        navigate("/error", {
-          state: {
-            displayerror: "That person doesn't exist"
-          }
-        })
-      );
+    getAllUsers().then(users => {
+      this.setState({ users: users, isLoading: false });
+    });
+    // .catch(err =>
+    //   navigate("/error", {
+    //     state: {
+    //       displayerror: "Those people don't exist"
+    //     }
+    //   })
+    // );
   }
 }
 
