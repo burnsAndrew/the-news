@@ -7,27 +7,27 @@ const Nav = props => {
   return (
     <nav>
       <ul className="nav">
-        <Link to="/">
+        <Link to="/" style={{ textDecoration: "none" }}>
           <li>Home</li>
         </Link>
-        <Link to="/topics">
+        <Link to="/topics" style={{ textDecoration: "none" }}>
           <li>Topics</li>
         </Link>
-        <Link to="/articles">
+        <Link to="/articles" style={{ textDecoration: "none" }}>
           <li>Articles</li>
         </Link>
-        <Link to="/community">
+        <Link to="/community" style={{ textDecoration: "none" }}>
           <li>Community</li>
         </Link>
         {!loggedInUser ? (
           <div>
-            <Link to="/login">
+            <Link to="/login" style={{ textDecoration: "none" }}>
               <li>Log in</li>
             </Link>
           </div>
         ) : (
           <div className="loggedIn">
-            <Link to="/user">
+            <Link to="/user" style={{ textDecoration: "none" }}>
               <li>My Profile</li>
             </Link>
             <li>

@@ -22,7 +22,10 @@ class Topics extends Component {
             topics.map(topic => {
               return (
                 <li key={topic.slug} className="topic">
-                  <Link to={`/articles/topic/${topic.slug}`}>
+                  <Link
+                    to={`/articles/topic/${topic.slug}`}
+                    style={{ textDecoration: "none" }}
+                  >
                     <h4>{topic.slug} </h4>
                   </Link>
                 </li>

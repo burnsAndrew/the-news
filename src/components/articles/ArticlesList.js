@@ -114,7 +114,10 @@ class ArticlesList extends Component {
             articles.map(article => {
               return (
                 <div className="articleCard" key={article.article_id}>
-                  <Link to={`/articles/${article.article_id}`}>
+                  <Link
+                    to={`/articles/${article.article_id}`}
+                    style={{ textDecoration: "none" }}
+                  >
                     <li className="articleCardHeader">
                       <h2>{article.title}</h2>
                     </li>
