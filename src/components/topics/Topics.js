@@ -24,7 +24,7 @@ class Topics extends Component {
                 <li key={topic.slug} className="topic">
                   <Link
                     to={`/articles/topic/${topic.slug}`}
-                    style={{ textDecoration: "none" }}
+                    style={{ textDecoration: "none", color: "black" }}
                   >
                     <h4>{topic.slug} </h4>
                   </Link>
