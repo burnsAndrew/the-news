@@ -98,7 +98,8 @@ class PostArticle extends Component {
       .catch(err =>
         navigate("/error", {
           state: {
-            displayerror: "That article doesn't exist"
+            displayerror:
+              "That can't be done.  Please complete all sections correctly."
           }
         })
       );

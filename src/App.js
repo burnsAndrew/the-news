@@ -12,6 +12,7 @@ import User from "./components/users/UserProfile";
 import UsersList from "./components/users/UsersList";
 import LogInBox from "./components/LogInBox";
 import Error from "./components/Error";
+import NoMatch from "./NoMatch";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
 class App extends Component {
@@ -22,13 +23,13 @@ class App extends Component {
   logInUser = username => {
     const { loggedInUser } = this.state;
     this.setState({ loggedInUser: username }, () => {
-      navigate("/home");
+      navigate("/");
     });
     localStorage.setItem("loggedInUser", loggedInUser);
   };
 
   logOutUser = () => {
-    this.setState({ loggedInUser: "" }, () => navigate("/home"));
+    this.setState({ loggedInUser: "" }, () => navigate("/"));
     localStorage.setItem("loggedInUser", "");
   };
 
@@ -58,6 +59,7 @@ class App extends Component {
             <User path="/user" loggedInUser={loggedInUser} />
             <UsersList path="/community" loggedInUser={loggedInUser} />
             <Error path="/error" />
+            <NoMatch default />
           </Router>
         </div>
       </React.Fragment>

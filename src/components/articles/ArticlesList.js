@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-// import { Link } from "@reach/router";
+import { Link } from "@reach/router";
 import { getArticles, deleteArticle } from "../../api";
 import "../../App.css";
 import PostArticle from "./PostArticle";
 import Loader from "../Loader";
 import { navigate } from "@reach/router/lib/history";
 import Button from "@material-ui/core/Button";
-import ArticlesCard from "./ArticlesCard";
 
 class ArticlesList extends Component {
   state = {
@@ -109,7 +108,40 @@ class ArticlesList extends Component {
             Desc
           </Button>
         </div>
-        <ArticlesCard loggedInUser={loggedInUser} articles={articles} />
+        <ul className="articlesList" key="articles">
+          {articles &&
+            articles.map(article => {
+              return (
+                <div className="articleCard" key={article.article_id}>
+                  <Link
+                    to={`/articles/${article.article_id}`}
+                    style={{ textDecoration: "none" }}
+                  >
+                    <li className="articleCardHeader">
+                      <h2>{article.title}</h2>
+                    </li>
+                  </Link>
+                  <h3>Written By: {article.author}</h3>
+                  <h4>Topic: {article.topic}</h4>
+                  <h5>Votes: {article.votes}</h5>
+                  <h5>Comments: {article.comment_count}</h5>
+                  {loggedInUser === article.author && (
+                    <Button
+                      size="small"
+                      variant="contained"
+                      id="article.article_id"
+                      className="deleteButton"
+                      onClick={() => {
+                        this.handleDelete(article.article_id);
+                      }}
+                    >
+                      Delete your article
+                    </Button>
+                  )}
+                </div>
+              );
+            })}
+        </ul>
       </div>
     );
   }
