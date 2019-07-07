@@ -8,10 +8,10 @@ import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles(theme => ({
   root: {
-    flexGrow: 1
+    flexGrow: 0.5
   },
   title: {
-    flexGrow: 1
+    flexGrow: 0.5
   }
 }));
 

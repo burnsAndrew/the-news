@@ -68,6 +68,14 @@ h6 {
   color: #ffcc00;
 }
 
+#backgroundImage {
+  background-image: url("https://images.unsplash.com/photo-1446776899648-aa78eefe8ed0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=752&q=80");
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 1em;
+  z-index: -1;
+}
+
 .logInBox {
   background-color: rgb(255, 255, 255);
 }
@@ -76,9 +84,7 @@ h6 {
   overflow: hidden;
 }
 #subHeader {
-  background-color: #ffcc00;
-  color: rgb(32, 32, 32);
-  border-radius: 0.5em;
+  color: #ffe680;
 }
 .sort {
   padding-bottom: 0.5em;
