@@ -51,13 +51,9 @@ h6 {
 }
 
 /* COMPONENTS */
-.header {
-  display: inline;
-}
 
 .appName {
   text-align: center;
-  text-shadow: rgb(32, 32, 32);
   background-color: rgb(32, 32, 32);
   color: #ffcc00;
   width: 100%;
@@ -83,8 +79,8 @@ h6 {
 .nav {
   overflow: hidden;
 }
-#subHeader {
-  color: #ffe680;
+#subHeaderHome {
+  color: #ffcc00;
 }
 .sort {
   padding-bottom: 0.5em;
@@ -145,6 +141,12 @@ h6 {
   background-color: rgb(32, 32, 32);
   border-radius: 0.5em;
   color: #ffcc00;
+}
+
+#subHeader {
+  background-color: #ffcc00;
+  color: rgb(32, 32, 32);
+  border-radius: 0.5em;
 }
 
 .addArticleHeader {
