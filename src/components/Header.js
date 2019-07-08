@@ -5,7 +5,6 @@ const Header = () => {
     <header>
       <div className="header">
         <h1 className="appName">THE news.</h1>
-        {/* going to add the logo here */}
       </div>
     </header>
   );
