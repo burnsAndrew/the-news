@@ -2,7 +2,7 @@
 
 THE news is a responsive web app project, built with React and styled using the Material UI library. Inspired by [Reddit](https://www.reddit.com/), it serves as a news aggregation and commentary board.
 
-THE news is hosted here: ADD LINK INFO HERE WHEN HOSTED ON NETLIFY
+THE news is hosted [here at Netlify](https://the-news.netlify.com/).
 
 Please log in to THE news to utilise additional features, such as posting and deleting articles and comments, as well as voting and accessing a user's profile. There is an example of a username in the placeholder of the login form, but you can 'be' anyone who is part of the community (no password required). There are also features that can be enjoyed without being logged in, such as sorting and ordering articles and filtering articles by a chosen topic.
 
