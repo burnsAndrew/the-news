@@ -20,7 +20,6 @@ ul {
   background-color: white;
 }
 
-/* FONT SIZES */
 h1 {
   font-size: 5em;
 }
@@ -49,8 +48,6 @@ h6 {
   background-color: rgb(240, 240, 240);
   text-align: left;
 }
-
-/* COMPONENTS */
 
 .appName {
   text-align: center;

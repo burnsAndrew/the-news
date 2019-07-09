@@ -20,14 +20,14 @@ const Nav = props => {
   const { loggedInUser, logOutUser } = props;
   return (
     <div className="{classes.root}">
-      <AppBar position="static" color="black">
+      <AppBar position="static" color="inherit">
         <Toolbar>
-          <Typography variant="h8" className={classes.title}>
+          <Typography variant="subtitle1" className={classes.title}>
             <Link to="/" style={{ textDecoration: "none", color: "black" }}>
               Home
             </Link>
           </Typography>
-          <Typography variant="h8" className={classes.title}>
+          <Typography variant="subtitle1" className={classes.title}>
             <Link
               to="/topics"
               style={{ textDecoration: "none", color: "black" }}
@@ -35,7 +35,7 @@ const Nav = props => {
               Topics
             </Link>
           </Typography>
-          <Typography variant="h8" className={classes.title}>
+          <Typography variant="subtitle1" className={classes.title}>
             <Link
               to="/articles"
               style={{ textDecoration: "none", color: "black" }}
@@ -43,7 +43,7 @@ const Nav = props => {
               Articles
             </Link>
           </Typography>
-          <Typography variant="h8" className={classes.title}>
+          <Typography variant="subtitle1" className={classes.title}>
             <Link
               to="/community"
               style={{ textDecoration: "none", color: "black" }}
@@ -53,7 +53,7 @@ const Nav = props => {
           </Typography>
           {!loggedInUser ? (
             <div>
-              <Typography variant="h8" className={classes.title}>
+              <Typography variant="subtitle1" className={classes.title}>
                 <Link
                   to="/login"
                   style={{ textDecoration: "none", color: "black" }}
@@ -64,7 +64,7 @@ const Nav = props => {
             </div>
           ) : (
             <div className="loggedIn">
-              <Typography variant="h8" className={classes.title}>
+              <Typography variant="subtitle1" className={classes.title}>
                 <Link
                   to="/user"
                   style={{ textDecoration: "none", color: "black" }}

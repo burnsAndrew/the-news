@@ -35,11 +35,11 @@ class ArticlesList extends Component {
   };
 
   setSortBy = event => {
-    this.setState({ sort_by: event.currentTarget.value, isLoading: false });
+    this.setState({ sort_by: event, isLoading: false });
   };
 
   setOrderBy = event => {
-    this.setState({ order_by: event.currentTarget.value, isLoading: false });
+    this.setState({ order_by: event, isLoading: false });
   };
 
   render() {
@@ -57,7 +57,7 @@ class ArticlesList extends Component {
             size="small"
             variant="contained"
             className="sortbyDateButton"
-            onClick={this.setSortBy}
+            onClick={() => this.setSortBy("created_at")}
             value={"created_at"}
           >
             Date
@@ -66,7 +66,7 @@ class ArticlesList extends Component {
             size="small"
             variant="contained"
             className="sortbyCommentCountButton"
-            onClick={this.setSortBy}
+            onClick={() => this.setSortBy("comment_count")}
             value={"comment_count"}
           >
             Number Of Comments
@@ -75,7 +75,7 @@ class ArticlesList extends Component {
             size="small"
             variant="contained"
             className="sortbyVoteCountButton"
-            onClick={this.setSortBy}
+            onClick={() => this.setSortBy("votes")}
             value={"votes"}
           >
             Votes
@@ -84,7 +84,7 @@ class ArticlesList extends Component {
             size="small"
             variant="contained"
             className="sortbyAuthorButton"
-            onClick={this.setSortBy}
+            onClick={() => this.setSortBy("author")}
             value={"author"}
           >
             Author
@@ -93,7 +93,7 @@ class ArticlesList extends Component {
             size="small"
             variant="contained"
             className="orderbyAscendingButton"
-            onClick={this.setOrderBy}
+            onClick={() => this.setOrderBy("asc")}
             value={"asc"}
           >
             Asc
@@ -102,7 +102,7 @@ class ArticlesList extends Component {
             size="small"
             variant="contained"
             className="orderbyDescendingButton"
-            onClick={this.setOrderBy}
+            onClick={() => this.setOrderBy("desc")}
             value={"desc"}
           >
             Desc

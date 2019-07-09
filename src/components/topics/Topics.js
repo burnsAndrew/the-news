@@ -1,13 +1,14 @@
 import React, { Component } from "react";
 import { getTopics } from "../../api.js";
-import { Link, navigate } from "@reach/router";
+import { Link } from "@reach/router";
 import ArticlesList from "../articles/ArticlesList";
 import Loader from "../Loader";
 
 class Topics extends Component {
   state = {
     topics: [],
-    isLoading: true
+    isLoading: true,
+    error: null
   };
 
   render() {
@@ -40,15 +41,11 @@ class Topics extends Component {
   componentDidMount() {
     getTopics()
       .then(topics => {
-        this.setState({ topics: topics, isLoading: false });
+        this.setState({ topics: topics, isLoading: false, error: null });
       })
-      .catch(err =>
-        navigate("/error", {
-          state: {
-            displayerror: "That topic doesn't exist"
-          }
-        })
-      );
+      .catch(err => {
+        this.setState({ displayErr: err.msg });
+      });
   }
 }
 
