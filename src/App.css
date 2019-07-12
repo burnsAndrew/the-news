@@ -47,6 +47,7 @@ h6 {
 .author {
   background-color: rgb(240, 240, 240);
   text-align: left;
+  padding-left: 0.5em;
 }
 
 .appName {
@@ -214,8 +215,8 @@ h6 {
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  padding-left: 5vh;
-  padding-right: 5vh;
+  padding-left: 1vh;
+  padding-right: 1vh;
 }
 
 .userCard {
