@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import { Link } from "@reach/router";
+import { Link, navigate } from "@reach/router";
 import { getArticles, deleteArticle } from "../../api";
 import "../../App.css";
 import PostArticle from "./PostArticle";
 import Loader from "../Loader";
-import { navigate } from "@reach/router/lib/history";
 import Button from "@material-ui/core/Button";
 
 class ArticlesList extends Component {
@@ -12,8 +11,8 @@ class ArticlesList extends Component {
     articles: [],
     sort_by: null,
     order_by: "desc",
-    page: 1,
-    isLoading: true
+    isLoading: true,
+    error: null
   };
 
   handleDelete = article_id => {
@@ -151,13 +150,11 @@ class ArticlesList extends Component {
     const query = { topic };
     getArticles(query)
       .then(articles => {
-        this.setState({ articles: articles, isLoading: false });
+        this.setState({ articles: articles, error: null, isLoading: false });
       })
       .catch(err =>
         navigate("/error", {
-          state: {
-            displayerror: "That article doesn't exist"
-          }
+          state: { displayerror: "That Topic Does Not Exist" }
         })
       );
   }

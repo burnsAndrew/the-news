@@ -1,10 +1,10 @@
 import axios from "axios";
 const baseUrl = "https://ab-nc-news.herokuapp.com/api/";
 
-export const getArticles = ({ topic, sort_by, order_by, page }) => {
+export const getArticles = ({ topic, sort_by, order_by }) => {
   return axios
     .get(`${baseUrl}articles`, {
-      params: { topic, sort_by, order: order_by, page }
+      params: { topic, sort_by, order: order_by }
     })
     .then(({ data: { articles } }) => {
       return articles;

@@ -44,7 +44,7 @@ class Topics extends Component {
         this.setState({ topics: topics, isLoading: false, error: null });
       })
       .catch(err => {
-        this.setState({ displayErr: err.msg });
+        this.setState({ displayerror: "That Topic Does Not Exist" });
       });
   }
 }
